@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:MasterySkillApp.Views"
+            x:Class="MasterySkillApp.Views.MasterTabView"
+            Title="The Random Project">
+
+    <local:BadgesView Title="Achievements"/>
+    <local:GiveBadgesView Title="Your Team!" />
+
+</TabbedPage>
