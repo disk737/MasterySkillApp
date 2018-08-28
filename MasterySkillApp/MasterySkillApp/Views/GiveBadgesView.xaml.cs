@@ -1,4 +1,5 @@
-﻿using MasterySkillApp.Services;
+﻿using MasterySkillApp.Models;
+using MasterySkillApp.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,22 @@ namespace MasterySkillApp.Views
 
             // Vinculo el Source con la lista
             ListUsersBadges.ItemsSource = _userServices.GetUserModels();
-		}
-	}
+
+        }
+
+        private void ListUsersBadges_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+
+            // Retorno si no tengo un item seleccionado
+            if (ListUsersBadges.SelectedItem == null)
+                return;
+
+            var userSelected = e.SelectedItem as UserModel;
+
+            Navigation.PushAsync(new SendBadges(userSelected));
+
+            ListUsersBadges.SelectedItem = null;
+
+        }
+    }
 }

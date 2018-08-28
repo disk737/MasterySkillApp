@@ -8,5 +8,6 @@ namespace MasterySkillApp.Models
     {
         public string BadgeName { get; set; }
         public string BadgeStatus { get; set; }
+        public string BadgeText { get; set; }
     }
 }

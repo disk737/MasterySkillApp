@@ -1,18 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MasterySkillApp.Views.GiveBadgesView">
+             x:Class="MasterySkillApp.Views.SendBadges"
+             Title="{Binding UserName}">
+    
     <ContentPage.Content>
         
-        <ListView x:Name="ListUsersBadges" ItemSelected="ListUsersBadges_ItemSelected">
+        <ListView x:Name="ListSendBadges" ItemSelected="ListSendBadges_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ImageCell ImageSource="ImgUserCircle.png"
-                               Text="{Binding UserName}"
-                               Detail="{Binding UserStatus}"/>
+                    <ImageCell ImageSource="ImgBadgeTest.png"
+                           Text="{Binding BadgeName}"
+                           Detail="{Binding BadgeText}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
         
     </ContentPage.Content>
+    
 </ContentPage>
