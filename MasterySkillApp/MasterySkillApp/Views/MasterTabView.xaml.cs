@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MasterySkillApp.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,5 +17,20 @@ namespace MasterySkillApp.Views
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private async void Logout_ToolbarItem(object sender, EventArgs e)
+        {
+            var response = await DisplayAlert("Exit", "Are you sure?", "Yes", "No");
+            if (response)
+            {
+                // Invoco el servicio de Logout
+                UserServices _userServices = new UserServices();
+                _userServices.UserLogout();
+
+                //LLamo el servicio que se encarga del Logout y vuelvo a la pagina de Login
+                await Navigation.PopAsync();
+            }
+
+        }
+    }
 }

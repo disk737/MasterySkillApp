@@ -3,6 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MasterySkillApp.App">
 	<Application.Resources>
-    
-	</Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="appColor">#2196F3</Color>
+
+            <!-- Styles -->
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource appColor}"/>
+                <Setter Property="BarTextColor" Value="White"/>
+            </Style>
+            <!-- Styles -->
+
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>

@@ -11,11 +11,11 @@ namespace MasterySkillApp.Services
         {
             List<BadgeModel> BadgeList = new List<BadgeModel>
             {
-                new BadgeModel {BadgeName = "Tecnica", BadgeStatus = "26 Tokens", BadgeText = "La maestria sobre la herramienta"},
-                new BadgeModel {BadgeName = "Colaboración", BadgeStatus = "15 Tokens", BadgeText = "Solo unidos tendremos exito"},
-                new BadgeModel {BadgeName = "Comunicación", BadgeStatus = "18 Tokens", BadgeText = "Mi lenguaje es universal"},
-                new BadgeModel {BadgeName = "Soluciones", BadgeStatus = "26 Tokens", BadgeText = "Las buenas ideas se explican solas"},
-                new BadgeModel {BadgeName = "Pasion", BadgeStatus = "20 Tokens", BadgeText = "Aquella fuerza que me impulsa hacia adelante"}
+                new BadgeModel {badgeName = "Tecnica", badgeStatus = "26 Tokens", badgeText = "La maestria sobre la herramienta"},
+                new BadgeModel {badgeName = "Colaboración", badgeStatus = "15 Tokens", badgeText = "Solo unidos tendremos exito"},
+                new BadgeModel {badgeName = "Comunicación", badgeStatus = "18 Tokens", badgeText = "Mi lenguaje es universal"},
+                new BadgeModel {badgeName = "Soluciones", badgeStatus = "26 Tokens", badgeText = "Las buenas ideas se explican solas"},
+                new BadgeModel {badgeName = "Pasion", badgeStatus = "20 Tokens", badgeText = "Aquella fuerza que me impulsa hacia adelante"}
             };
 
             return BadgeList ;

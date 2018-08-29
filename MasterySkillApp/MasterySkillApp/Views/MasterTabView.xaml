@@ -3,8 +3,13 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:local="clr-namespace:MasterySkillApp.Views"
             x:Class="MasterySkillApp.Views.MasterTabView"
-            Title="The Random Project V0.1">
+            Title="The Mastery Project V0.1">
 
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem Icon="ImgLogout.png" Text="Logout" Activated="Logout_ToolbarItem" Order="Primary"/>
+
+    </TabbedPage.ToolbarItems>
+    
     <local:BadgesView Title="Dashboard"/>
     <local:GiveBadgesView Title="Your Team!" />
 

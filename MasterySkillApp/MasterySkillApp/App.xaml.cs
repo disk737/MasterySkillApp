@@ -12,7 +12,7 @@ namespace MasterySkillApp
 		{
 			InitializeComponent();
 
-			MainPage = new NavigationPage(new MasterTabView());
+			MainPage = new NavigationPage(new LoginPageView());
 		}
 
 		protected override void OnStart ()

@@ -6,7 +6,9 @@ namespace MasterySkillApp.Models
 {
     public class UserModel
     {
-        public string UserName { get; set; }
-        public string UserStatus { get; set; }
+        public string userName { get; set; }
+        public string userStatus { get; set; }
+        public string userEmail { get; set; }
+        public string userPassword { get; set; }
     }
 }

@@ -8,8 +8,8 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ImageCell ImageSource="ImgUserCircle.png"
-                               Text="{Binding UserName}"
-                               Detail="{Binding UserStatus}"/>
+                               Text="{Binding userName}"
+                               Detail="{Binding userStatus}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

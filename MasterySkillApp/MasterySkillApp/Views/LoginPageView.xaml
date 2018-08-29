@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MasterySkillApp.Views.LoginPageView"
+             Padding="20,0,20,0"
+             NavigationPage.HasNavigationBar="False">
+    
+    <ContentPage.Content>
+        
+        <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="20">
+
+            <Label Text="Mastery App!!" 
+               HorizontalOptions="Center" 
+               FontSize="Large" 
+               TextColor="{StaticResource appColor}"/>
+
+            <Label Text="Login" 
+               HorizontalOptions="Center" 
+               FontSize="40" 
+               TextColor="{StaticResource appColor}" 
+               FontAttributes="Bold"/>
+
+            <Entry x:Name="EntryEmail" Placeholder="Email" Keyboard="Email" />
+
+            <Entry x:Name="EntryPassword" Placeholder="Password" IsPassword="True"/>
+
+            <StackLayout HorizontalOptions="End" Orientation="Horizontal">
+
+                <Label Text="Remember me!"/>
+
+                <Switch x:Name="SaveCredencials" IsToggled="False"/>
+
+            </StackLayout>
+
+            <Button Text="Login" HorizontalOptions="Fill" Clicked="LoginHandler_Clicked"/>
+
+            <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="Gray"/>
+
+            <Label Text="Sign Up" HorizontalOptions="Center" TextColor="{StaticResource appColor}" IsVisible="False"/>
+
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

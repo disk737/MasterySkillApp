@@ -41,7 +41,7 @@ namespace MasterySkillApp.Views
             
             var badgeSelected = e.SelectedItem as BadgeModel;
 
-            DisplayAlert(String.Format("Medalla {0}",badgeSelected.BadgeName),String.Format("Enviar a {0}?",userModel.UserName),"Enviar","Cancel");
+            DisplayAlert(String.Format("Medalla {0}",badgeSelected.badgeName),String.Format("Enviar a {0}?",userModel.userName),"Enviar","Cancel");
 
             ListSendBadges.SelectedItem = null;
         }
