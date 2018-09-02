@@ -21,7 +21,7 @@ namespace MasterySkillApp.Views
             BadgeServices _badgeServices = new BadgeServices();
 
             // Vinculo el Source a la lista
-            badgesList.ItemsSource = _badgeServices.GetBadgeModels();
+            badgesList.ItemsSource = _badgeServices.GetBadgeModels2();
 		}
 	}
 }

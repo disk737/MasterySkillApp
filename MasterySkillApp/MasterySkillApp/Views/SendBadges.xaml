@@ -10,8 +10,8 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ImageCell ImageSource="ImgBadgeTest.png"
-                           Text="{Binding badgeName}"
-                           Detail="{Binding badgeText}"/>
+                           Text="{Binding attrName}"
+                           Detail="{Binding attrDescrp}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

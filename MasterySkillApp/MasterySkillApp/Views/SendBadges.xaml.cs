@@ -15,8 +15,10 @@ namespace MasterySkillApp.Views
 	public partial class SendBadges : ContentPage
 	{
         // Actividad que se encarga de cargar las medallas para que sean enviadas
-
         private UserModel userModel { get; set; }
+
+        // Lista donde guardo los atributos basicos
+        private List<BasicAttrModel> _basicAttr { get; set; }
 
         public SendBadges (UserModel argUserModel)
 		{
@@ -25,13 +27,25 @@ namespace MasterySkillApp.Views
             // Guardo el contenido del argumento es una propiedad global
             userModel = argUserModel;
             BindingContext = userModel;
-
-            // Instancio el controlador de servicios
-            BadgeServices _badgeServices = new BadgeServices();
-
-            // Vinculo el Source de la lista al resultado del servicio
-            ListSendBadges.ItemsSource = _badgeServices.GetBadgeModels();
 		}
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            // Reviso si la lista fue cargada en un momento anterior
+            if (MasterySingleton.Instance._listBasicAttr == null)
+            {
+                // Instancio el controlador de servicios
+                BadgeServices _badgeServices = new BadgeServices();
+
+                MasterySingleton.Instance._listBasicAttr = await _badgeServices.GetBasicAttr();
+            }
+                
+            // Vinculo el Source de la lista al resultado del servicio
+            ListSendBadges.ItemsSource = MasterySingleton.Instance._listBasicAttr;
+
+        }
 
         private void ListSendBadges_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
@@ -39,9 +53,9 @@ namespace MasterySkillApp.Views
             if (ListSendBadges.SelectedItem == null)
                 return;
             
-            var badgeSelected = e.SelectedItem as BadgeModel;
+            var attrSelected = e.SelectedItem as BasicAttrModel;
 
-            DisplayAlert(String.Format("Medalla {0}",badgeSelected.badgeName),String.Format("Enviar a {0}?",userModel.userName),"Enviar","Cancel");
+            DisplayAlert(string.Format("Token {0}", attrSelected.attrName), string.Format("Enviar a {0}?",userModel.userName),"Enviar","Cancel");
 
             ListSendBadges.SelectedItem = null;
         }

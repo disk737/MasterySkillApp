@@ -13,6 +13,7 @@ namespace MasterySkillApp
 
         // API para crear e ingresar usuarios
         public static string UserSignIn = "/mastery/user/signIn";
+        public static string GetBasicAttr = "/mastery/user/getBasicAttr";
 
         // Cadenas que guardan la informacion del usuario
         public static string SaveActive = "active";     // Cadena que se usa para indicar que el usuario pidio guardar las credenciales
