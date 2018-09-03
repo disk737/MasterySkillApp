@@ -18,12 +18,23 @@ namespace MasterySkillApp.Views
 		{
 			InitializeComponent ();
 
-            // Instancio el servicio de usuarios
-            UserServices _userServices = new UserServices();
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (MasterySingleton.Instance._listUserModel == null)
+            {
+                // Instancio el servicio de usuarios
+                UserServices _userServices = new UserServices();
+
+                // Hago la llamada al Web Service para traer la lista de usuario
+                MasterySingleton.Instance._listUserModel = await _userServices.GetUserModels();
+            }
 
             // Vinculo el Source con la lista
-            ListUsersBadges.ItemsSource = _userServices.GetUserModels();
-
+            ListUsersBadges.ItemsSource = MasterySingleton.Instance._listUserModel;
         }
 
         private void ListUsersBadges_ItemSelected(object sender, SelectedItemChangedEventArgs e)

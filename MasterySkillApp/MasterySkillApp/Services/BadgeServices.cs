@@ -44,7 +44,7 @@ namespace MasterySkillApp.Services
                 {
                     var content = await response.Content.ReadAsStringAsync();
 
-                    //DataResponse = ((ListBasicAttrModel)JsonConvert.DeserializeObject<ListBasicAttrModel>(content)).BasicAttrs;
+                    // Deserializo la respuesta del servidor en un Json
                     DataResponse = (JsonConvert.DeserializeObject<ListBasicAttrModel>(content)).BasicAttrs;
                 }
 

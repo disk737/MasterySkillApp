@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -30,7 +31,7 @@ namespace MasterySkillApp.Services
             UserToken Token = new UserToken();
 
             // Genero el Body de la peticion
-            var BodyRequest = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
+            var BodyRequest = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, Constans.AplicationJson);
 
             // Construyo la URI a consultar
             var uri = new Uri(string.Format(Constans.RestUrl + Constans.UserSignIn));
@@ -73,7 +74,46 @@ namespace MasterySkillApp.Services
 
         }
 
-        public List<UserModel> GetUserModels()
+        public async Task<List<UserModel>> GetUserModels()
+        {
+            // Lista para guarda la respuesta del servicio
+            List<UserModel> DataResponse = new List<UserModel>();
+
+            // Capturo el Token guardado en la aplicacion
+            string userToken = Application.Current.Properties[Constans.UserTokenString].ToString();
+
+            // Incluyo el Token de autentificacion en el encabezado
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", userToken);
+
+            // Construyo la URI a consultar
+            var uri = new Uri(string.Format(Constans.RestUrl + Constans.GetAllUsers));
+
+            // Indico que se realiza una peticion
+            Debug.WriteLine("Peticion GetUserModels");
+
+            try
+            {
+                var response = await client.GetAsync(uri);
+
+                // Espero una respuesta positiva del servidor (200)
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+
+                    // Deserializo la respuesta del servidor en un Json
+                    DataResponse = (JsonConvert.DeserializeObject<ListUserModel>(content)).UserModels;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"				ERROR {0}", ex.Message);
+            }
+
+            return DataResponse;
+        }
+
+        // De salidaaaaaaa
+        public List<UserModel> GetUserModels2()
         {
             List<UserModel> UserList = new List<UserModel>
             {
