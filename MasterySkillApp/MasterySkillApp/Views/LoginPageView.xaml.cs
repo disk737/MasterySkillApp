@@ -23,17 +23,13 @@ namespace MasterySkillApp.Views
         public LoginPageView ()
 		{
 			InitializeComponent ();
-		}
+
+            _userServices = new UserServices();
+        }
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-
-            //if (activityActivated)
-            //    return;
-
-            ////Activo la bandera para que no se vuelva a llamar el Push de MainTabView
-            //activityActivated = true;
 
             // Reviso si tengo un Token viejo que pueda usar. Esto es un seguro
             if (Application.Current.Properties.ContainsKey(Constans.UserTokenString))
@@ -50,7 +46,6 @@ namespace MasterySkillApp.Views
                 await Navigation.PushAsync(new MasterTabView());
             }
 
-            _userServices = new UserServices();
         }
 
         async private void LoginHandler_Clicked(object sender, EventArgs e)

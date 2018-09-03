@@ -17,11 +17,23 @@ namespace MasterySkillApp.Views
 		{
 			InitializeComponent ();
 
+           
+		}
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            badgesList.BeginRefresh();
+
             // Instacion el BadgeServices
             BadgeServices _badgeServices = new BadgeServices();
 
             // Vinculo el Source a la lista
-            badgesList.ItemsSource = _badgeServices.GetBadgeModels2();
-		}
-	}
+            badgesList.ItemsSource = await _badgeServices.GetBasicAttr();
+
+            badgesList.EndRefresh();
+
+        }
+    }
 }

@@ -3,14 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MasterySkillApp.Views.BadgesView">
     <ContentPage.Content>
+
         <ListView x:Name="badgesList">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ImageCell ImageSource="ImgBadgeTest.jpg" 
-                               Text="{Binding badgeName}"
+                               Text="{Binding attrName}"
                                Detail="{Binding badgeStatus}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
     </ContentPage.Content>
 </ContentPage>

@@ -111,22 +111,5 @@ namespace MasterySkillApp.Services
 
             return DataResponse;
         }
-
-        // De salidaaaaaaa
-        public List<UserModel> GetUserModels2()
-        {
-            List<UserModel> UserList = new List<UserModel>
-            {
-                new UserModel{userName = "Angelica Avila", userStatus = "I bring the help"},
-                new UserModel{userName = "Ivan Hidalgo", userStatus = "I am your backup!!"},
-                new UserModel{userName = "Mariana Alzate", userStatus = "Automation  master"},
-                new UserModel{userName = "Jaime Trujillo", userStatus = "Architect OS"},
-                new UserModel{userName = "Giovanny Cifuentes", userStatus = "Hippies will inherit the earth"},
-                new UserModel{userName = "Arturo Suarez", userStatus = "Golden Newbie"},
-                new UserModel{userName = "Juan Camilo Moreno", userStatus = "Code Master"},
-            };
-
-            return UserList;
-        }
     }
 }

@@ -33,6 +33,8 @@ namespace MasterySkillApp.Views
         {
             base.OnAppearing();
 
+            ListSendBadges.BeginRefresh();
+
             // Reviso si la lista fue cargada en un momento anterior
             if (MasterySingleton.Instance._listBasicAttr == null)
             {
@@ -44,6 +46,8 @@ namespace MasterySkillApp.Views
                 
             // Vinculo el Source de la lista al resultado del servicio
             ListSendBadges.ItemsSource = MasterySingleton.Instance._listBasicAttr;
+
+            ListSendBadges.EndRefresh();
 
         }
 
