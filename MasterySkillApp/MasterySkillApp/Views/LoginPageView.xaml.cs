@@ -43,7 +43,9 @@ namespace MasterySkillApp.Views
                 Application.Current.Properties[Constans.SaveCredentials] as string == Constans.SaveActive)
             {
                 // Llamo la pagina principal de Tabs
-                await Navigation.PushAsync(new MasterTabView());
+                
+                Application.Current.MainPage = new NavigationPage(new MasterTabView());
+               // await Navigation.PushAsync(new MasterTabView());
             }
 
         }
