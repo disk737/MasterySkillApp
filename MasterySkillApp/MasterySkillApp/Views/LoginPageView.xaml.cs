@@ -42,8 +42,7 @@ namespace MasterySkillApp.Views
                 Application.Current.Properties.ContainsKey(Constans.SaveCredentials) &&
                 Application.Current.Properties[Constans.SaveCredentials] as string == Constans.SaveActive)
             {
-                // Llamo la pagina principal de Tabs
-                
+                // Llamo la pagina principal de Tabs              
                 Application.Current.MainPage = new NavigationPage(new MasterTabView());
                // await Navigation.PushAsync(new MasterTabView());
             }
@@ -68,7 +67,8 @@ namespace MasterySkillApp.Views
                     Application.Current.Properties[Constans.SaveCredentials] = Constans.SaveUnactive;
 
                 // Llamo la pagina principal de Tabs
-                await Navigation.PushAsync(new MasterTabView());
+                //await Navigation.PushAsync(new MasterTabView());
+                Application.Current.MainPage = new NavigationPage(new MasterTabView());
             }
             else
             {
