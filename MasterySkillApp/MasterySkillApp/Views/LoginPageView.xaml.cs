@@ -45,7 +45,7 @@ namespace MasterySkillApp.Views
                 // Llamo la pagina principal de Tabs
                 await Navigation.PushAsync(new MasterTabView());
             }
-
+            
         }
 
         async private void LoginHandler_Clicked(object sender, EventArgs e)

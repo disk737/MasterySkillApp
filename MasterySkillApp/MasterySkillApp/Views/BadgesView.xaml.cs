@@ -15,9 +15,7 @@ namespace MasterySkillApp.Views
 	{
 		public BadgesView ()
 		{
-			InitializeComponent ();
-
-           
+			InitializeComponent ();         
 		}
 
         protected async override void OnAppearing()
