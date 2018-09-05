@@ -28,7 +28,8 @@ namespace MasterySkillApp.Views
                 _userServices.UserLogout();
 
                 //LLamo el servicio que se encarga del Logout y vuelvo a la pagina de Login
-                await Navigation.PopAsync();
+                //await Navigation.PopAsync();
+                Application.Current.MainPage = new NavigationPage(new LoginPageView());
             }
 
         }
