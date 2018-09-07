@@ -9,12 +9,17 @@ namespace MasterySkillApp.Models
         public List<BasicAttrModel> BasicAttrs { get; set; }
     }
 
+    public class ListAttrPoints
+    {
+        public List<BasicAttrModel> AttrPoints { get; set; }
+    }
+
     public class BasicAttrModel
     {
         public string basicAttrID { get; set; }
         public string attrName { get; set; }
         public string attrDescrp { get; set; }
         public string attrImg { get; set; }
-
+        public string attrTotalPoints { get; set; }
     }
 }

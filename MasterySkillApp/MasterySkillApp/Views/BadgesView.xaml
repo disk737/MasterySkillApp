@@ -9,7 +9,7 @@
                 <DataTemplate>
                     <ImageCell ImageSource="ImgBadgeTest.jpg" 
                                Text="{Binding attrName}"
-                               Detail="{Binding badgeStatus}" />
+                               Detail="{Binding attrTotalPoints, StringFormat='Tokens {0:N}'}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

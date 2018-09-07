@@ -27,7 +27,7 @@ namespace MasterySkillApp.Views
             _userServices = new UserServices();
         }
 
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
 

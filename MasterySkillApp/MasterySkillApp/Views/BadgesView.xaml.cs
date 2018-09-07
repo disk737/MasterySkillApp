@@ -22,13 +22,17 @@ namespace MasterySkillApp.Views
         {
             base.OnAppearing();
 
+            // Reviso si la lista ya fue llenada para que no se vuelva a llenar
+            if (badgesList.ItemsSource != null)
+                return;
+
             badgesList.BeginRefresh();
 
             // Instacion el BadgeServices
             BadgeServices _badgeServices = new BadgeServices();
 
             // Vinculo el Source a la lista
-            badgesList.ItemsSource = await _badgeServices.GetBasicAttr();
+            badgesList.ItemsSource = await _badgeServices.GetAttrPoints();
 
             badgesList.EndRefresh();
 
