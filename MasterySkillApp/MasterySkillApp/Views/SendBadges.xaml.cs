@@ -20,6 +20,9 @@ namespace MasterySkillApp.Views
         // Lista donde guardo los atributos basicos
         private List<BasicAttrModel> _basicAttr { get; set; }
 
+        // Creo el objeto de los servicios
+        BadgeServices _badgeServices;
+
         public SendBadges (UserModel argUserModel)
 		{
 			InitializeComponent ();
@@ -27,7 +30,10 @@ namespace MasterySkillApp.Views
             // Guardo el contenido del argumento es una propiedad global
             userModel = argUserModel;
             BindingContext = userModel;
-		}
+
+            // Instancio el controlador de servicios
+            _badgeServices = new BadgeServices();
+        }
 
         protected async override void OnAppearing()
         {
@@ -38,9 +44,7 @@ namespace MasterySkillApp.Views
             // Reviso si la lista fue cargada en un momento anterior
             if (MasterySingleton.Instance._listBasicAttr == null)
             {
-                // Instancio el controlador de servicios
-                BadgeServices _badgeServices = new BadgeServices();
-
+                // Hago la llamada al servicio de la lista de atributos
                 MasterySingleton.Instance._listBasicAttr = await _badgeServices.GetBasicAttr();
             }
                 
@@ -51,17 +55,29 @@ namespace MasterySkillApp.Views
 
         }
 
-        private void ListSendBadges_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        // Handler para enviar un punto a otro usuario
+        private async void ListSendBadges_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             // Retorno si no tengo nada seleccionado
             if (ListSendBadges.SelectedItem == null)
                 return;
-            
-            var attrSelected = e.SelectedItem as BasicAttrModel;
-
-            DisplayAlert(string.Format("Token {0}", attrSelected.attrName), string.Format("Enviar a {0}?",userModel.userName),"Enviar","Cancel");
 
             ListSendBadges.SelectedItem = null;
+
+            var attrSelected = e.SelectedItem as BasicAttrModel;
+
+            var sendRes = await DisplayAlert(string.Format("Medalla {0}", attrSelected.attrName), string.Format("Enviar a {0}?",userModel.userName),"Enviar","Cancel");
+
+            // Evaluo la respuesta del usuario
+            if (sendRes)
+            {
+                // Invoco el servicio para el envio de una medalla a un usuario
+                var resFail = await _badgeServices.SendAttrPoint(userModel,attrSelected);
+
+                // Reviso si hubo algun fallo
+                if (resFail != "")
+                    await DisplayAlert("Oooooppsss",resFail, "OK");
+            }
         }
     }
 }

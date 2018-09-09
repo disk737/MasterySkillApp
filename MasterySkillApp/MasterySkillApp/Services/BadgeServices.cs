@@ -16,7 +16,7 @@ namespace MasterySkillApp.Services
         // Creo el cliente Http para realizar las peticiones
         private HttpClient client = new HttpClient();
 
-        // Metodo para obtener los atributos basicos desde el servidor
+        // GET: Metodo para obtener los atributos basicos desde el servidor
         public async Task<List<BasicAttrModel>> GetBasicAttr()
         {
             // Lista para guarda la respuesta del servicio
@@ -57,6 +57,7 @@ namespace MasterySkillApp.Services
             return DataResponse;
         }
 
+        // GET: Metodo para obtener los puntos en cada atributo basico
         public async Task<List<BasicAttrModel>> GetAttrPoints()
         {
             // Lista para guarda la respuesta del servicio
@@ -95,6 +96,48 @@ namespace MasterySkillApp.Services
             }
 
             return DataResponse;
+        }
+
+        // POST: Metodo para enviar un punto a un usuario
+        public async Task<string> SendAttrPoint(UserModel argUser, BasicAttrModel argBasicAttr)
+        {
+            // Debo agregar un Handler cuando las respuesas del servidor son fallidas
+            // Solucion temporal 
+            string resFail = "";
+
+            // Capturo el Token guardado en la aplicacion
+            string userToken = Application.Current.Properties[Constans.UserTokenString].ToString();
+
+            // Incluyo el Token de autentificacion en el encabezado
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", userToken);
+
+            // Construyo la URI a consultar
+            var uri = new Uri(string.Format(Constans.RestUrl + Constans.SendAttrPoint));
+
+            // Creo el objeto que voy a Serializar
+            var attrPoint = new SendAttrModel(argUser.userUUID, argBasicAttr.basicAttrID);
+            
+            // Genero el Body de la peticion
+            var BodyRequest = new StringContent(JsonConvert.SerializeObject(attrPoint), Encoding.UTF8, Constans.AplicationJson);
+
+            // Indico que se realiza una peticion
+            Debug.WriteLine("Peticion SendAttrPoint");
+
+            // Hago la llamada al WS
+            try
+            {
+                var response = await client.PostAsync(uri, BodyRequest);
+                
+                // Debo agregar un Handler cuando las respuesas del servidor son fallidas
+                
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"				ERROR {0}", ex.Message);
+                resFail = ex.Message;
+            }
+
+            return resFail;
         }
     }
 }

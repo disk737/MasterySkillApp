@@ -4,7 +4,7 @@
              x:Class="MasterySkillApp.Views.BadgesView">
     <ContentPage.Content>
 
-        <ListView x:Name="badgesList">
+        <ListView x:Name="badgesList" ItemSelected="badgesList_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ImageCell ImageSource="ImgBadgeTest.jpg" 

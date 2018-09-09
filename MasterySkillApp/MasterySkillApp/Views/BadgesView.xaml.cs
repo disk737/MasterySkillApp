@@ -37,5 +37,10 @@ namespace MasterySkillApp.Views
             badgesList.EndRefresh();
 
         }
+
+        private void badgesList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            badgesList.SelectedItem = null;
+        }
     }
 }
