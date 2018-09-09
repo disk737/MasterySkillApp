@@ -4,14 +4,14 @@
             xmlns:local="clr-namespace:MasterySkillApp.Views"
             x:Class="MasterySkillApp.Views.MasterTabView"
             NavigationPage.HasBackButton="False"
-            Title="The Mastery Project V1.0">
+            Icon="ImgBadgeTest.png">
 
     <TabbedPage.ToolbarItems>
         <ToolbarItem Icon="ImgLogout.png" Text="Logout" Activated="Logout_ToolbarItem" Order="Primary"/>
 
     </TabbedPage.ToolbarItems>
         
-    <local:BadgesView Title="Dashboard"/>
+    <local:BadgesView Title="Dashboard"  />
     
     <local:TeamListView Title="Your Team!"/>
     

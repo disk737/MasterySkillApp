@@ -108,19 +108,19 @@
     <AndroidResource Include="Resources\drawable\ImgLogout.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ImgPas.png" />
+    <AndroidResource Include="Resources\drawable\ImgSolve_R.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ImgCom.png" />
+    <AndroidResource Include="Resources\drawable\ImgTecnique_R.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ImgTec.png" />
+    <AndroidResource Include="Resources\drawable\ImgCom_R.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ImgCoo.png" />
+    <AndroidResource Include="Resources\drawable\ImgCoop_R.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ImgInn.png" />
+    <AndroidResource Include="Resources\drawable\ImgPasion_R.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

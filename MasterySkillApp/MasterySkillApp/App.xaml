@@ -4,15 +4,19 @@
              x:Class="MasterySkillApp.App">
 	<Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="appColor">#2196F3</Color>
+            <Color x:Key="WhiteColor">#FFFFFF</Color>
+            <Color x:Key="CreamColor">#FCD581</Color>
+            <Color x:Key="RedAppColor">#D52941</Color>
+            <Color x:Key="DarkRedColor">#990D35</Color>
+            <Color x:Key="DarkGrayColor">#1D201F</Color>
 
             <!-- Styles -->
             <Style TargetType="NavigationPage">
-                <Setter Property="BarBackgroundColor" Value="{StaticResource appColor}"/>
+                <Setter Property="BarBackgroundColor" Value="{StaticResource DarkGrayColor}"/>
                 <Setter Property="BarTextColor" Value="White"/>
             </Style>
             <!-- Styles -->
-
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

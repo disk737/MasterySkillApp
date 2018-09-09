@@ -12,12 +12,12 @@
             <Label Text="Mastery App!!" 
                HorizontalOptions="Center" 
                FontSize="Large" 
-               TextColor="{StaticResource appColor}"/>
+               TextColor="{StaticResource DarkGrayColor}"/>
 
             <Label Text="Login" 
                HorizontalOptions="Center" 
                FontSize="40" 
-               TextColor="{StaticResource appColor}" 
+               TextColor="{StaticResource DarkGrayColor}" 
                FontAttributes="Bold"/>
 
             <Entry x:Name="EntryEmail" Placeholder="Email" Keyboard="Email" />
@@ -36,7 +36,7 @@
 
             <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="Gray"/>
 
-            <Label Text="Sign Up" HorizontalOptions="Center" TextColor="{StaticResource appColor}" IsVisible="False"/>
+            <Label Text="Sign Up" HorizontalOptions="Center" TextColor="{StaticResource DarkGrayColor}" IsVisible="False"/>
 
         </StackLayout>
         

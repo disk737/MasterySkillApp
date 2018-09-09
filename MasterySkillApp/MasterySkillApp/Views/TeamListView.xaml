@@ -8,7 +8,9 @@
                 <DataTemplate>
                     <ImageCell ImageSource="ImgUserCircle.png"
                                Text="{Binding userName}"
-                               Detail="{Binding userStatus}"/>
+                               TextColor="{StaticResource DarkGrayColor}"
+                               Detail="{Binding userStatus}"
+                               DetailColor="{StaticResource RedAppColor}"/>
 
                 </DataTemplate>
             </ListView.ItemTemplate>

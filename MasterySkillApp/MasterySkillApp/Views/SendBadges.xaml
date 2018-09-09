@@ -9,9 +9,11 @@
         <ListView x:Name="ListSendBadges" ItemSelected="ListSendBadges_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ImageCell ImageSource="ImgBadgeTest.png"
-                           Text="{Binding attrName}"
-                           Detail="{Binding attrDescrp}"/>
+                    <ImageCell ImageSource="{Binding attrImg,StringFormat = '{0:N}_R.png'}"
+                               Text="{Binding attrName}"
+                               TextColor="{StaticResource DarkGrayColor}"
+                               Detail="{Binding attrDescrp}"
+                               DetailColor="{StaticResource RedAppColor}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

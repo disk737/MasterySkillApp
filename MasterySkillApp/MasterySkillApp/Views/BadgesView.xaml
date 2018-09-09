@@ -1,15 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MasterySkillApp.Views.BadgesView">
+             x:Class="MasterySkillApp.Views.BadgesView"
+             >
+    
     <ContentPage.Content>
 
         <ListView x:Name="badgesList" ItemSelected="badgesList_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ImageCell ImageSource="ImgBadgeTest.jpg" 
+                    <ImageCell ImageSource="{Binding attrImg, StringFormat = '{0:N}_R.png'}" 
                                Text="{Binding attrName}"
-                               Detail="{Binding attrTotalPoints, StringFormat='Tokens {0:N}'}" />
+                               TextColor="{StaticResource DarkGrayColor}"
+                               Detail="{Binding attrTotalPoints, StringFormat='Medallas {0:N}'}"
+                               DetailColor="{StaticResource RedAppColor}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

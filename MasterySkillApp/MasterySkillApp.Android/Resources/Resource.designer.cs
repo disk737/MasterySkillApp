@@ -2916,22 +2916,22 @@ namespace MasterySkillApp.Droid
 			public const int ImgBadgeTest = 2130837772;
 			
 			// aapt resource value: 0x7f02010d
-			public const int ImgCom = 2130837773;
+			public const int ImgCom_R = 2130837773;
 			
 			// aapt resource value: 0x7f02010e
-			public const int ImgCoo = 2130837774;
+			public const int ImgCoop_R = 2130837774;
 			
 			// aapt resource value: 0x7f02010f
-			public const int ImgInn = 2130837775;
+			public const int ImgLogout = 2130837775;
 			
 			// aapt resource value: 0x7f020110
-			public const int ImgLogout = 2130837776;
+			public const int ImgPasion_R = 2130837776;
 			
 			// aapt resource value: 0x7f020111
-			public const int ImgPas = 2130837777;
+			public const int ImgSolve_R = 2130837777;
 			
 			// aapt resource value: 0x7f020112
-			public const int ImgTec = 2130837778;
+			public const int ImgTecnique_R = 2130837778;
 			
 			// aapt resource value: 0x7f020113
 			public const int ImgUserCircle = 2130837779;
