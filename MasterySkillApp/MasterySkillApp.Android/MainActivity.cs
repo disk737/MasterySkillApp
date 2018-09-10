@@ -6,6 +6,10 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+
 
 namespace MasterySkillApp.Droid
 {
@@ -18,6 +22,8 @@ namespace MasterySkillApp.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
+
+            AppCenter.Start("9bc0c492-c4de-4ea7-814f-0fc37c72b27a", typeof(Analytics), typeof(Crashes));
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
