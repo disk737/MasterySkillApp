@@ -20,7 +20,9 @@ namespace MasterySkillApp.Views
 
         private async void Logout_ToolbarItem(object sender, EventArgs e)
         {
-            var response = await DisplayAlert("Exit", "Are you sure?", "Yes", "No");
+            var response = await DisplayAlert("Salir", "¿Estas seguro?", "Si", "No");
+
+            // Evaluo la respuesta
             if (response)
             {
                 // Invoco el servicio de Logout

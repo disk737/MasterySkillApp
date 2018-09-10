@@ -13,7 +13,7 @@
         
     <local:BadgesView Title="Dashboard"  />
     
-    <local:TeamListView Title="Your Team!"/>
+    <local:TeamListView Title="Tu Equipo!"/>
     
 
 </TabbedPage>

@@ -4,6 +4,9 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 namespace MasterySkillApp.iOS
 {
@@ -23,6 +26,9 @@ namespace MasterySkillApp.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+
+            AppCenter.Start("f1be2f87-74e1-4e72-ae2b-5c1d5c53ed16", typeof(Analytics), typeof(Crashes));
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
