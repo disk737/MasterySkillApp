@@ -9,16 +9,15 @@
         
         <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="20">
 
-            <Label Text="Mastery App!!" 
-               HorizontalOptions="Center" 
-               FontSize="Large" 
-               TextColor="{StaticResource DarkGrayColor}"/>
+            <Label Text="\{Insert a name here\}" 
+                   HorizontalOptions="Center" 
+                   FontSize="Large" 
+                   TextColor="{StaticResource DarkGrayColor}"
+                   FontAttributes="Bold"/>
 
-            <Label Text="Login" 
-               HorizontalOptions="Center" 
-               FontSize="40" 
-               TextColor="{StaticResource DarkGrayColor}" 
-               FontAttributes="Bold"/>
+            <Image Source="ImgBadgeTest.png" 
+                   WidthRequest="80"
+                   HorizontalOptions="Center"/>
 
             <Entry x:Name="EntryEmail" Placeholder="Email" Keyboard="Email" />
 
