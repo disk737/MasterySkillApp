@@ -131,5 +131,8 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\ImgPasion_R.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ImgBadge_R44.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

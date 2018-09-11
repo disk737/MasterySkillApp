@@ -6,7 +6,8 @@
     
     <ContentPage.Content>
 
-        <ListView x:Name="badgesList" ItemSelected="badgesList_ItemSelected">
+        <ListView x:Name="badgesList" ItemSelected="badgesList_ItemSelected" 
+                  IsPullToRefreshEnabled="True" Refreshing="badgesList_Refreshing">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ImageCell ImageSource="{Binding attrImg, StringFormat = '{0:N}_R.png'}" 

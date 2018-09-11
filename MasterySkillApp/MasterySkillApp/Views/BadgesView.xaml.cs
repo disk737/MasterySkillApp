@@ -13,10 +13,18 @@ namespace MasterySkillApp.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class BadgesView : ContentPage
 	{
-		public BadgesView ()
+        // Defino la calse
+        BadgeServices _badgeServices;
+
+
+        public BadgesView ()
 		{
-			InitializeComponent ();         
-		}
+			InitializeComponent ();
+            // Instancio el BadgeServices
+            _badgeServices = new BadgeServices();
+
+
+        }
 
         protected async override void OnAppearing()
         {
@@ -28,19 +36,27 @@ namespace MasterySkillApp.Views
 
             badgesList.BeginRefresh();
 
-            // Instacion el BadgeServices
-            BadgeServices _badgeServices = new BadgeServices();
-
-            // Vinculo el Source a la lista
-            badgesList.ItemsSource = await _badgeServices.GetAttrPoints();
-
-            badgesList.EndRefresh();
+            // Llamo el metodo para refrescar la lista
+            RefreshAttrList();
 
         }
 
         private void badgesList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             badgesList.SelectedItem = null;
+        }
+
+        private void badgesList_Refreshing(object sender, EventArgs e)
+        {
+            RefreshAttrList();
+        }
+
+        private async void RefreshAttrList()
+        {
+            // Vinculo el Source a la lista
+            badgesList.ItemsSource = await _badgeServices.GetAttrPoints();
+
+            badgesList.EndRefresh();
         }
     }
 }
