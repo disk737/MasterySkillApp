@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.MasterySkillApp" android:installLocation="auto">
-	<uses-sdk android:minSdkVersion="19" android:targetSdkVersion="27" />
-	<application android:label="MasterySkillApp.Android" android:icon="@drawable/ImgBadge_R44"></application>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.Assemble.MasterySkillApp" android:installLocation="auto">
+	<uses-sdk android:minSdkVersion="18" android:targetSdkVersion="27" />
+	<application android:label="MasterySkillApp" android:icon="@drawable/ImgBadge_R44"></application>
 </manifest>
