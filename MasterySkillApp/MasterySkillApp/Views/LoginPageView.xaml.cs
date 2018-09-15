@@ -63,7 +63,7 @@ namespace MasterySkillApp.Views
                 userToken = await _userServices.UserSignIn(EntryEmail.Text, EntryPassword.Text);
             };
 
-            // Reviso si obtengo un Token o un mensaje de error
+            // Reviso si obtengo un Token o un mensaje de error 
             if (userToken.token != null)
             {
                 // Guardo el token generado para el usuario
@@ -81,6 +81,7 @@ namespace MasterySkillApp.Views
             }
             else
             {
+                // Esto lo puedo cambiar con ACR
                 // Usuario y/o contraseña no corresponde
                 await DisplayAlert("Mastery", userToken.message, "OK");
             }
