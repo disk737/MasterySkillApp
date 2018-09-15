@@ -1,4 +1,6 @@
-﻿using MasterySkillApp.Services;
+﻿using Acr.UserDialogs;
+using MasterySkillApp.Models;
+using MasterySkillApp.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,8 +53,15 @@ namespace MasterySkillApp.Views
 
         async private void LoginHandler_Clicked(object sender, EventArgs e)
         {
-            // Valido las credenciales ingresadas por el usuario
-            var userToken = await _userServices.UserSignIn(EntryEmail.Text, EntryPassword.Text);
+            // Creo el objeto para guardar el token del usuario
+            UserToken userToken;
+
+            // Implemento un Loading para el Login
+            using (UserDialogs.Instance.Loading("Validando...", null, null, true, MaskType.Black))
+            {
+                // Valido las credenciales ingresadas por el usuario
+                userToken = await _userServices.UserSignIn(EntryEmail.Text, EntryPassword.Text);
+            };
 
             // Reviso si obtengo un Token o un mensaje de error
             if (userToken.token != null)
