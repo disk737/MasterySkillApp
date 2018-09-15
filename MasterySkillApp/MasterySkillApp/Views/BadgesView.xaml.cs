@@ -23,13 +23,6 @@ namespace MasterySkillApp.Views
             // Instancio el BadgeServices
             _badgeServices = new BadgeServices();
 
-
-        }
-
-        protected async override void OnAppearing()
-        {
-            base.OnAppearing();
-
             // Reviso si la lista ya fue llenada para que no se vuelva a llenar
             if (badgesList.ItemsSource != null)
                 return;
@@ -38,6 +31,21 @@ namespace MasterySkillApp.Views
 
             // Llamo el metodo para refrescar la lista
             RefreshAttrList();
+
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            //// Reviso si la lista ya fue llenada para que no se vuelva a llenar
+            //if (badgesList.ItemsSource != null)
+            //    return;
+
+            //badgesList.BeginRefresh();
+
+            //// Llamo el metodo para refrescar la lista
+            //RefreshAttrList();
 
         }
 

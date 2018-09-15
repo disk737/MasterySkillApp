@@ -22,4 +22,6 @@ namespace MasterySkillApp.Models
         public string attrImg { get; set; }
         public string attrTotalPoints { get; set; }
     }
+
+    
 }
