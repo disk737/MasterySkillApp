@@ -17,6 +17,8 @@ namespace MasterySkillApp
         public static string GetAllUsers = "/mastery/user/getAllUsers";
         public static string GetAttrPoints = "/mastery/user/getAttrPoints";
         public static string SendAttrPoint = "/mastery/user/sendAttrPoint";
+        public static string getDetailCount = "/mastery/user/getDetailCount";
+        
 
         // Cadenas que guardan la informacion del usuario
         public static string SaveActive = "active";     // Cadena que se usa para indicar que el usuario pidio guardar las credenciales

@@ -10,8 +10,10 @@
         <ToolbarItem Icon="ImgLogout.png" Text="Logout" Activated="Logout_ToolbarItem" Order="Primary"/>
 
     </TabbedPage.ToolbarItems>
-        
-    <local:BadgesView Title="Dashboard"  />
+
+    <local:DetailBadgeFeed Title="News Feed"  />
+
+    <local:BadgesView Title="Medallas"  />
     
     <local:TeamListView Title="Tu Equipo!"/>
     

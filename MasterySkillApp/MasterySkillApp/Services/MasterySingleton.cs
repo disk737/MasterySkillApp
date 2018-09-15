@@ -15,7 +15,7 @@ namespace MasterySkillApp.Services
         // Aqui pongo los Array que necesito que se mantengan
         public List<BasicAttrModel> _listBasicAttr { get; set; }
         public List<UserModel> _listUserModel { get; set; }
-
+        
         public static MasterySingleton Instance
         {
             get
