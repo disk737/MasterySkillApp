@@ -33,6 +33,7 @@ namespace MasterySkillApp.Views
         {
             base.OnAppearing();
 
+            // ESTO SE DEBE VERIFICAR YA QUE SI EL TOKEN ESTA VIEJO LA APP LO DEJARA PASAR Y TENDRA PROBLEMAS MAS ADELANTE
             // Reviso si tengo un Token viejo que pueda usar. Esto es un seguro
             if (Application.Current.Properties.ContainsKey(Constans.UserTokenString))
             {
