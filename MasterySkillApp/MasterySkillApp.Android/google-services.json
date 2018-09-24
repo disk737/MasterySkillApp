@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1054129770213",
+    "firebase_url": "https://masteryandroid.firebaseio.com",
+    "project_id": "masteryandroid",
+    "storage_bucket": "masteryandroid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1054129770213:android:ff9fa532d305eb6c",
+        "android_client_info": {
+          "package_name": "com.Assemble.MasterySkillApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1054129770213-ej46ghg1aimob1bjlte9e02jbj1ro83q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQGyH0UYH22MoCItIPQ81faEyKPyxi1vY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
