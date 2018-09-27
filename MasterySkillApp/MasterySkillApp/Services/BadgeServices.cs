@@ -120,7 +120,7 @@ namespace MasterySkillApp.Services
             try
             {
                 var response = await client.GetAsync(uri);
-
+                
                 // Espero una respuesta positiva del servidor (200)
                 if (response.IsSuccessStatusCode)
                 {
