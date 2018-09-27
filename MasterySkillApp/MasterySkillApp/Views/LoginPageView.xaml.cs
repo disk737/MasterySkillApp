@@ -1,4 +1,7 @@
-﻿using MasterySkillApp.Services;
+﻿using Acr.UserDialogs;
+using MasterySkillApp.Models;
+using MasterySkillApp.Services;
+using Microsoft.AppCenter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +34,7 @@ namespace MasterySkillApp.Views
         {
             base.OnAppearing();
 
+            // ESTO SE DEBE VERIFICAR YA QUE SI EL TOKEN ESTA VIEJO LA APP LO DEJARA PASAR Y TENDRA PROBLEMAS MAS ADELANTE
             // Reviso si tengo un Token viejo que pueda usar. Esto es un seguro
             if (Application.Current.Properties.ContainsKey(Constans.UserTokenString))
             {
@@ -51,10 +55,20 @@ namespace MasterySkillApp.Views
 
         async private void LoginHandler_Clicked(object sender, EventArgs e)
         {
-            // Valido las credenciales ingresadas por el usuario
-            var userToken = await _userServices.UserSignIn(EntryEmail.Text, EntryPassword.Text);
+            // Creo el objeto para guardar el token del usuario
+            UserToken userToken;
 
-            // Reviso si obtengo un Token o un mensaje de error
+            // Implemento un Loading para el Login
+            using (UserDialogs.Instance.Loading("Validando...", null, null, true, MaskType.Black))
+            {
+                // Consigo el ID de Instalacion
+                System.Guid? installId = await AppCenter.GetInstallIdAsync();
+
+                // Valido las credenciales ingresadas por el usuario
+                userToken = await _userServices.UserSignIn(EntryEmail.Text, EntryPassword.Text, installId.ToString());
+            };
+
+            // Reviso si obtengo un Token o un mensaje de error 
             if (userToken.token != null)
             {
                 // Guardo el token generado para el usuario
@@ -72,6 +86,7 @@ namespace MasterySkillApp.Views
             }
             else
             {
+                // Esto lo puedo cambiar con ACR
                 // Usuario y/o contraseña no corresponde
                 await DisplayAlert("Mastery", userToken.message, "OK");
             }

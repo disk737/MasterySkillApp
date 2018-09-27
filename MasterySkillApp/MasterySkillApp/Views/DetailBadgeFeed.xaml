@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MasterySkillApp.Views.DetailBadgeFeed">
+    <ContentPage.Content>
+
+        <ListView x:Name="ListNewsFeed" IsPullToRefreshEnabled="True" Refreshing="ListNewsFeed_Refreshing"
+                  ItemSelected="ListNewsFeed_ItemSelected" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+
+                        <StackLayout Orientation="Horizontal" Padding="5,8,5,2">
+                            <Image Source="{Binding attrImg, StringFormat = '{0:N}_R.png'}"
+                                   HeightRequest="50"
+                                   Margin="0, 0, 10, 0"/>
+
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Felicitaciones, " TextColor="{StaticResource DarkGrayColor}"  />
+                                        <Span Text="{Binding userName}" TextColor="{StaticResource RedAppColor}"  />
+                                        <Span Text=" te ha enviado una medalla " TextColor="{StaticResource DarkGrayColor}"  />
+                                        <Span Text="{Binding attrName}" TextColor="{StaticResource RedAppColor}"  />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                        
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+       
+    </ContentPage.Content>
+</ContentPage>

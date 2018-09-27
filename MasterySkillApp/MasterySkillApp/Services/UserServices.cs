@@ -18,13 +18,14 @@ namespace MasterySkillApp.Services
         private HttpClient client = new HttpClient();
 
         // Metodo para obtener el Token de Logueo del usuario
-        public async Task<UserToken> UserSignIn(string argUserEmail, string argUserPassword)
+        public async Task<UserToken> UserSignIn(string argUserEmail, string argUserPassword, string argInstallationID)
         {
             // Creo un onjeto para guardar la info del usuario
             var user = new UserModel
             {
                 userEmail = argUserEmail,
-                userPassword = argUserPassword
+                userPassword = argUserPassword,
+                userDevice = argInstallationID
             };
 
             // Creo el contenedor del Token que voy a retornar

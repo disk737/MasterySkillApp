@@ -16,5 +16,6 @@ namespace MasterySkillApp.Models
         public string userUUID { get; set; }
         public string userName { get; set; }
         public string userStatus { get; set; }
+        public string userDevice { get; set; }
     }
 }
