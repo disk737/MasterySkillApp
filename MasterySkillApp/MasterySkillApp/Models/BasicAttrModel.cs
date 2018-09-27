@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,7 +12,13 @@ namespace MasterySkillApp.Models
 
     public class ListAttrPoints
     {
+        [JsonProperty("AttrPoints")]
         public List<BasicAttrModel> AttrPoints { get; set; }
+
+        //public ListAttrPoints()
+        //{
+        //    AttrPoints = new List<BasicAttrModel>();
+        //}
     }
 
     public class BasicAttrModel

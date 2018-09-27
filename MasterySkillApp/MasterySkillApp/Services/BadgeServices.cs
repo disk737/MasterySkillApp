@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -59,9 +60,11 @@ namespace MasterySkillApp.Services
 
         // GET: Metodo para obtener los puntos en cada atributo basico
         public async Task<List<BasicAttrModel>> GetAttrPoints()
+        //public async Task<ListAttrPoints> GetAttrPoints()
         {
             // Lista para guarda la respuesta del servicio
             List<BasicAttrModel> DataResponse = new List<BasicAttrModel>();
+            //ListAttrPoints listAttrPoints = new ListAttrPoints();
 
             // Capturo el Token guardado en la aplicacion
             string userToken = Application.Current.Properties[Constans.UserTokenString].ToString();
@@ -70,7 +73,8 @@ namespace MasterySkillApp.Services
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", userToken);
 
             // Construyo la URI a consultar
-            var uri = new Uri(string.Format(Constans.RestUrl + Constans.GetAttrPoints));
+            //var uri = new Uri(string.Format(Constans.RestUrl + Constans.GetAttrPoints));
+            var uri = new Uri(string.Format(Constans.RestUrl + "/mastery/privateFail"));
 
             // Indico que se realiza una peticion
             Debug.WriteLine("Peticion GetAttrPoints");
@@ -81,21 +85,29 @@ namespace MasterySkillApp.Services
                 var response = await client.GetAsync(uri);
 
                 // Espero una respuesta positiva del servidor (200)
-                if (response.IsSuccessStatusCode)
-                {
-                    var content = await response.Content.ReadAsStringAsync();
-
-                    // Deserializo la respuesta del servidor en un Json
-                    DataResponse = (JsonConvert.DeserializeObject<ListAttrPoints>(content)).AttrPoints;
+                if (!response.IsSuccessStatusCode)
+                {                    
+                    throw new HttpExceptionEx(response.StatusCode, "Fallo en el servidor", false);
                 }
+                
+                var content = await response.Content.ReadAsStringAsync();
+                // listAttrPoints.AttrPoints = JsonConvert.DeserializeObject<List<BasicAttrModel>>(content); -> Alberto
+                
+                // Deserializo la respuesta del servidor en un Json
+                DataResponse = (JsonConvert.DeserializeObject<ListAttrPoints>(content)).AttrPoints;
 
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(@"				ERROR {0}", ex.Message);
+                throw new HttpExceptionEx(HttpStatusCode.BadRequest, "", false);
             }
+            //finally
+            //{
 
-            return DataResponse;
+            //}
+
+            return  DataResponse; //listAttrPoints;
         }
 
         // POST: Metodo para enviar un punto a un usuario
@@ -116,7 +128,7 @@ namespace MasterySkillApp.Services
 
             // Creo el objeto que voy a Serializar
             var attrPoint = new SendAttrModel(argUser.userUUID, argBasicAttr.basicAttrID);
-            
+
             // Genero el Body de la peticion
             var BodyRequest = new StringContent(JsonConvert.SerializeObject(attrPoint), Encoding.UTF8, Constans.AplicationJson);
 
@@ -127,9 +139,9 @@ namespace MasterySkillApp.Services
             try
             {
                 var response = await client.PostAsync(uri, BodyRequest);
-                
+
                 // Debo agregar un Handler cuando las respuesas del servidor son fallidas
-                
+
             }
             catch (Exception ex)
             {

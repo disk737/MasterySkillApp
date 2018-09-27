@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,7 +13,7 @@ namespace MasterySkillApp.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class BadgesView : ContentPage
-	{
+    {
         // Defino la calse
         BadgeServices _badgeServices;
 
@@ -53,10 +54,24 @@ namespace MasterySkillApp.Views
 
         private async void RefreshAttrList()
         {
-            // Vinculo el Source a la lista
-            badgesList.ItemsSource = await _badgeServices.GetAttrPoints();
+            try
+            {
+                // Vinculo el Source a la lista
+                badgesList.ItemsSource = await _badgeServices.GetAttrPoints();
+                badgesList.EndRefresh();
 
-            badgesList.EndRefresh();
+            }
+            catch (HttpExceptionEx ex)
+            {
+                // Debo buscar una forma de hacer esto generico para todos las paginas
+                if (ex.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    // Debo enviar al usuario al Login
+                    Application.Current.MainPage = new NavigationPage(new LoginPageView());
+                }
+                
+            }
         }
+
     }
 }
