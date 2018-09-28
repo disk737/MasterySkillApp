@@ -5,7 +5,7 @@ using System.Text;
 namespace MasterySkillApp.Models
 {
 
-    public class ListDetailAttr
+    public class ListDetailAttr : BaseResponse
     {
         public List<DetailAttrModel> AttrDetail { get; set; }
     }

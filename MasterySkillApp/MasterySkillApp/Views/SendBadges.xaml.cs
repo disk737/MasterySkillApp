@@ -45,7 +45,7 @@ namespace MasterySkillApp.Views
             if (MasterySingleton.Instance._listBasicAttr == null)
             {
                 // Hago la llamada al servicio de la lista de atributos
-                MasterySingleton.Instance._listBasicAttr = await _badgeServices.GetBasicAttr();
+                MasterySingleton.Instance._listBasicAttr = (await _badgeServices.GetBasicAttr()).BasicAttrs;
             }
                 
             // Vinculo el Source de la lista al resultado del servicio

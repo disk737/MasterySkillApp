@@ -1,4 +1,5 @@
-﻿using MasterySkillApp.Services;
+﻿using MasterySkillApp.Models;
+using MasterySkillApp.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,8 +15,9 @@ namespace MasterySkillApp.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class BadgesView : ContentPage
     {
-        // Defino la calse
-        BadgeServices _badgeServices;
+        // Creo una instancia para los servicios
+        private BadgeServices _badgeServices;
+        private bool OnlyOnce = false;
 
 
         public BadgesView ()
@@ -25,28 +27,16 @@ namespace MasterySkillApp.Views
             _badgeServices = new BadgeServices();
 
             // Reviso si la lista ya fue llenada para que no se vuelva a llenar
-            if (badgesList.ItemsSource != null)
+            if (OnlyOnce)
                 return;
+
+            // Cambio la bandera para que solo se ejecute una sola vez
+            OnlyOnce = true;
 
             badgesList.BeginRefresh();
 
             // Llamo el metodo para refrescar la lista
             RefreshAttrList();
-
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            //// Reviso si la lista ya fue llenada para que no se vuelva a llenar
-            //if (badgesList.ItemsSource != null)
-            //    return;
-
-            //badgesList.BeginRefresh();
-
-            //// Llamo el metodo para refrescar la lista
-            //RefreshAttrList();
 
         }
 
@@ -62,23 +52,32 @@ namespace MasterySkillApp.Views
 
         private async void RefreshAttrList()
         {
-            try
-            {
-                // Vinculo el Source a la lista
-                badgesList.ItemsSource = await _badgeServices.GetAttrPoints();
-                badgesList.EndRefresh();
 
-            }
-            catch (HttpExceptionEx ex)
+            // Vinculo el Source a la lista
+            //badgesList.ItemsSource = await _badgeServices.GetAttrPoints();
+            ListAttrPoints response = await _badgeServices.GetAttrPoints();
+            badgesList.EndRefresh();
+            
+            // Evaluo la respuesta del servidor
+            switch (response.StatusCode)
             {
-                // Debo buscar una forma de hacer esto generico para todos las paginas
-                if (ex.StatusCode == HttpStatusCode.Unauthorized)
-                {
-                    // Debo enviar al usuario al Login
+                case HttpStatusCode.Unauthorized:
+                    // Invoco el servicio de Logout
+                    UserServices _userServices = new UserServices();
+                    _userServices.UserLogout();
+
                     Application.Current.MainPage = new NavigationPage(new LoginPageView());
-                }
-                
+                    break;
+
+                case HttpStatusCode.InternalServerError:
+                    await DisplayAlert("Oooopssss","Algo fallo en el servidor. Intentemos mas tarde ¿Vale?","OK");
+                    break;
+     
+                default:
+                    badgesList.ItemsSource = response.AttrPoints;
+                    break;
             }
+
         }
 
     }
