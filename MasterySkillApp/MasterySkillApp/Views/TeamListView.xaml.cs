@@ -35,7 +35,7 @@ namespace MasterySkillApp.Views
                 UserServices _userServices = new UserServices();
 
                 // Hago la llamada al Web Service para traer la lista de usuario
-                MasterySingleton.Instance._listUserModel = await _userServices.GetUserModels();
+                MasterySingleton.Instance._listUserModel = (await _userServices.GetUserModels()).UserModels;
             }
 
             // Vinculo el Source con la lista

@@ -75,10 +75,10 @@ namespace MasterySkillApp.Services
 
         }
 
-        public async Task<List<UserModel>> GetUserModels()
+        public async Task<ListUserModel> GetUserModels()
         {
             // Lista para guarda la respuesta del servicio
-            List<UserModel> DataResponse = new List<UserModel>();
+            ListUserModel DataResponse = new ListUserModel();
 
             // Capturo el Token guardado en la aplicacion
             string userToken = Application.Current.Properties[Constans.UserTokenString].ToString();
@@ -95,15 +95,19 @@ namespace MasterySkillApp.Services
             try
             {
                 var response = await client.GetAsync(uri);
+                // Guardo la respuesta del servidor
+                DataResponse.StatusCode = response.StatusCode;
 
                 // Espero una respuesta positiva del servidor (200)
-                if (response.IsSuccessStatusCode)
-                {
-                    var content = await response.Content.ReadAsStringAsync();
+                if (!response.IsSuccessStatusCode)
+                    return DataResponse;
 
-                    // Deserializo la respuesta del servidor en un Json
-                    DataResponse = (JsonConvert.DeserializeObject<ListUserModel>(content)).UserModels;
-                }
+
+                var content = await response.Content.ReadAsStringAsync();
+
+                // Deserializo la respuesta del servidor en un Json
+                DataResponse.UserModels = (JsonConvert.DeserializeObject<ListUserModel>(content)).UserModels;
+
             }
             catch (Exception ex)
             {

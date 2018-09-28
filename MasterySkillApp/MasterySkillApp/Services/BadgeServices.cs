@@ -77,8 +77,7 @@ namespace MasterySkillApp.Services
 
             // Construyo la URI a consultar
             var uri = new Uri(string.Format(Constans.RestUrl + Constans.GetAttrPoints));
-            //var uri = new Uri(string.Format(Constans.RestUrl + "/mastery/privateFail"));
-
+            
             // Indico que se realiza una peticion
             Debug.WriteLine("Peticion GetAttrPoints");
 
