@@ -1,5 +1,6 @@
 ﻿using MasterySkillApp.Models;
 using MasterySkillApp.Services;
+using Microsoft.AppCenter.Analytics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace MasterySkillApp.Views
             _badgeServices = new BadgeServices();
 
             // Reviso si la lista ya fue llenada para que no se vuelva a llenar
-            if (OnlyOnce)
+            if (OnlyOnce)   
                 return;
 
             // Cambio la bandera para que solo se ejecute una sola vez
@@ -38,6 +39,13 @@ namespace MasterySkillApp.Views
             RefreshNewsFeed();
 
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            Analytics.TrackEvent("NewsFeed");
+        }
+
 
         private void ListNewsFeed_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {

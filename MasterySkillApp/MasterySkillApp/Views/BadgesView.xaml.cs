@@ -1,5 +1,6 @@
 ﻿using MasterySkillApp.Models;
 using MasterySkillApp.Services;
+using Microsoft.AppCenter.Analytics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,9 +28,9 @@ namespace MasterySkillApp.Views
             _badgeServices = new BadgeServices();
 
             // Reviso si la lista ya fue llenada para que no se vuelva a llenar
-            if (OnlyOnce)
+            if (OnlyOnce)  
                 return;
-
+                
             // Cambio la bandera para que solo se ejecute una sola vez
             OnlyOnce = true;
 
@@ -38,6 +39,12 @@ namespace MasterySkillApp.Views
             // Llamo el metodo para refrescar la lista
             RefreshAttrList();
 
+        }
+
+        protected override void OnAppearing()
+        {
+            Analytics.TrackEvent("BadgesView");
+            base.OnAppearing();
         }
 
         private void badgesList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
