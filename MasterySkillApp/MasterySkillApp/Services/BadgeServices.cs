@@ -12,7 +12,7 @@ using Xamarin.Forms;
 
 namespace MasterySkillApp.Services
 {
-    public class BadgeServices
+    public class BadgeServices : BaseServices
     {
         // Creo el cliente Http para realizar las peticiones
         private HttpClient client = new HttpClient();
@@ -23,14 +23,8 @@ namespace MasterySkillApp.Services
             // Lista para guarda la respuesta del servicio
             ListBasicAttrModel DataResponse = new ListBasicAttrModel();
 
-            // Capturo el Token guardado en la aplicacion
-            string userToken = Application.Current.Properties[Constans.UserTokenString].ToString();
-
-            // Incluyo el Token de autentificacion en el encabezado
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", userToken);
-
             // Construyo la URI a consultar
-            var uri = new Uri(string.Format(Constans.RestUrl + Constans.GetBasicAttr));
+            var uri = GetUserToken(Constans.GetBasicAttr, ref client);
 
             // Indico que se realiza una peticion
             Debug.WriteLine("Peticion GetBasicAttr");
@@ -69,14 +63,8 @@ namespace MasterySkillApp.Services
             //List<BasicAttrModel> DataResponse = new List<BasicAttrModel>();
             ListAttrPoints DataResponse = new ListAttrPoints();
 
-            // Capturo el Token guardado en la aplicacion
-            string userToken = Application.Current.Properties[Constans.UserTokenString].ToString();
-
-            // Incluyo el Token de autentificacion en el encabezado
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", userToken);
-
             // Construyo la URI a consultar
-            var uri = new Uri(string.Format(Constans.RestUrl + Constans.GetAttrPoints));
+            var uri = GetUserToken(Constans.GetAttrPoints, ref client);
             
             // Indico que se realiza una peticion
             Debug.WriteLine("Peticion GetAttrPoints");
@@ -116,14 +104,8 @@ namespace MasterySkillApp.Services
             // Lista para guarda la respuesta del servicio
             ListDetailAttr DataResponse = new ListDetailAttr();
 
-            // Capturo el Token guardado en la aplicacion
-            string userToken = Application.Current.Properties[Constans.UserTokenString].ToString();
-
-            // Incluyo el Token de autentificacion en el encabezado
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", userToken);
-
             // Construyo la URI a consultar
-            var uri = new Uri(string.Format(Constans.RestUrl + Constans.getDetailCount));
+            var uri = GetUserToken(Constans.getDetailCount, ref client);
 
             // Indico que se realiza una peticion
             Debug.WriteLine("Peticion GetDetailCount");
@@ -161,14 +143,8 @@ namespace MasterySkillApp.Services
             // Solucion temporal 
             string resFail = "";
 
-            // Capturo el Token guardado en la aplicacion
-            string userToken = Application.Current.Properties[Constans.UserTokenString].ToString();
-
-            // Incluyo el Token de autentificacion en el encabezado
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", userToken);
-
             // Construyo la URI a consultar
-            var uri = new Uri(string.Format(Constans.RestUrl + Constans.SendAttrPoint));
+            var uri = GetUserToken(Constans.SendAttrPoint, ref client);
 
             // Creo el objeto que voy a Serializar
             var attrPoint = new SendAttrModel(argUser.userUUID, argBasicAttr.basicAttrID);

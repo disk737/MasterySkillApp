@@ -11,7 +11,7 @@ using Xamarin.Forms;
 
 namespace MasterySkillApp.Services
 {
-    public class UserServices
+    public class UserServices : BaseServices
     {
 
         // Creo el cliente Http para realizar las peticiones
@@ -80,14 +80,8 @@ namespace MasterySkillApp.Services
             // Lista para guarda la respuesta del servicio
             ListUserModel DataResponse = new ListUserModel();
 
-            // Capturo el Token guardado en la aplicacion
-            string userToken = Application.Current.Properties[Constans.UserTokenString].ToString();
-
-            // Incluyo el Token de autentificacion en el encabezado
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", userToken);
-
             // Construyo la URI a consultar
-            var uri = new Uri(string.Format(Constans.RestUrl + Constans.GetAllUsers));
+            var uri = GetUserToken(Constans.GetAllUsers, ref client);
 
             // Indico que se realiza una peticion
             Debug.WriteLine("Peticion GetUserModels");
