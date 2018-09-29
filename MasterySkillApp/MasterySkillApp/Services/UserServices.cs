@@ -1,4 +1,5 @@
 ﻿using MasterySkillApp.Models;
+using Microsoft.AppCenter.Crashes;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -55,6 +56,7 @@ namespace MasterySkillApp.Services
             catch (Exception ex)
             {
                 Debug.WriteLine(@"				ERROR {0}", ex.Message);
+                Crashes.TrackError(ex);
             }
 
             return Token;
@@ -110,6 +112,7 @@ namespace MasterySkillApp.Services
             catch (Exception ex)
             {
                 Debug.WriteLine(@"				ERROR {0}", ex.Message);
+                Crashes.TrackError(ex);
             }
 
             return DataResponse;

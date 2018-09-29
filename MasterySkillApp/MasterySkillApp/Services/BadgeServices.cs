@@ -1,4 +1,5 @@
 ﻿using MasterySkillApp.Models;
+using Microsoft.AppCenter.Crashes;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -92,6 +93,7 @@ namespace MasterySkillApp.Services
             catch (Exception ex)
             {
                 Debug.WriteLine(@"				ERROR {0}", ex.Message);
+                Crashes.TrackError(ex);
                 //throw new HttpExceptionEx(HttpStatusCode.BadRequest, "", false);
             }
 
@@ -131,6 +133,7 @@ namespace MasterySkillApp.Services
             catch (Exception ex)
             {
                 Debug.WriteLine(@"				ERROR {0}", ex.Message);
+                Crashes.TrackError(ex);
             }
 
             return DataResponse;
@@ -166,6 +169,7 @@ namespace MasterySkillApp.Services
             catch (Exception ex)
             {
                 Debug.WriteLine(@"				ERROR {0}", ex.Message);
+                Crashes.TrackError(ex);
                 resFail = ex.Message;
             }
 
