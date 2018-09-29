@@ -1,5 +1,6 @@
 ﻿using MasterySkillApp.Models;
 using MasterySkillApp.Services;
+using Microsoft.AppCenter.Analytics;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,12 +21,13 @@ namespace MasterySkillApp.Views
         public TeamListView ()
 		{
 			InitializeComponent ();
-
         }
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+
+            Analytics.TrackEvent("TeamList");
 
             ListUserTeam.BeginRefresh();
 
@@ -35,7 +37,7 @@ namespace MasterySkillApp.Views
                 UserServices _userServices = new UserServices();
 
                 // Hago la llamada al Web Service para traer la lista de usuario
-                MasterySingleton.Instance._listUserModel = await _userServices.GetUserModels();
+                MasterySingleton.Instance._listUserModel = (await _userServices.GetUserModels()).UserModels;
             }
 
             // Vinculo el Source con la lista

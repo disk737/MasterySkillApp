@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MasterySkillApp.Models
 {
-    public class ListUserModel
+    public class ListUserModel : BaseResponse
     {
         public List<UserModel> UserModels { get; set; }
     }

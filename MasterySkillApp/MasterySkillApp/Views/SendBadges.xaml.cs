@@ -1,5 +1,6 @@
 ﻿using MasterySkillApp.Models;
 using MasterySkillApp.Services;
+using Microsoft.AppCenter.Analytics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,13 +40,15 @@ namespace MasterySkillApp.Views
         {
             base.OnAppearing();
 
+            Analytics.TrackEvent("SendBadges");
+
             ListSendBadges.BeginRefresh();
 
             // Reviso si la lista fue cargada en un momento anterior
             if (MasterySingleton.Instance._listBasicAttr == null)
             {
                 // Hago la llamada al servicio de la lista de atributos
-                MasterySingleton.Instance._listBasicAttr = await _badgeServices.GetBasicAttr();
+                MasterySingleton.Instance._listBasicAttr = (await _badgeServices.GetBasicAttr()).BasicAttrs;
             }
                 
             // Vinculo el Source de la lista al resultado del servicio
@@ -73,6 +76,8 @@ namespace MasterySkillApp.Views
             {
                 // Invoco el servicio para el envio de una medalla a un usuario
                 var resFail = await _badgeServices.SendAttrPoint(userModel,attrSelected);
+
+                Analytics.TrackEvent("BadgeSended");
 
                 // Reviso si hubo algun fallo
                 if (resFail != "")

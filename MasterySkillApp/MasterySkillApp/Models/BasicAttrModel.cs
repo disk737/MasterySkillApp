@@ -1,17 +1,22 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 
 namespace MasterySkillApp.Models
 {
-    public class ListBasicAttrModel
+    public class ListBasicAttrModel : BaseResponse
     {
         public List<BasicAttrModel> BasicAttrs { get; set; }
     }
 
-    public class ListAttrPoints
+    public class ListAttrPoints : BaseResponse
     {
+
+        [JsonProperty("AttrPoints")]
         public List<BasicAttrModel> AttrPoints { get; set; }
+
     }
 
     public class BasicAttrModel
