@@ -3,17 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MasterySkillApp.Views.TeamListView">
     <ContentPage.Content>
-        <ListView x:Name="ListUserTeam" ItemSelected="ListUsersBadges_ItemSelected">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ImageCell ImageSource="ImgUserCircle.png"
+
+        <StackLayout>
+            <SearchBar Placeholder="Buscar por nombre..." TextChanged="SearchBar_TextChanged"/>
+            
+            <ListView x:Name="ListUserTeam" ItemSelected="ListUsersBadges_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell ImageSource="ImgUserCircle.png"
                                Text="{Binding userName}"
                                TextColor="{StaticResource DarkGrayColor}"
                                Detail="{Binding userStatus}"
                                DetailColor="{StaticResource RedAppColor}"/>
 
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+        
+
     </ContentPage.Content>
 </ContentPage>
