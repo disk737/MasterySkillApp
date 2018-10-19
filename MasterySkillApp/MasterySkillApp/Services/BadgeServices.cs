@@ -140,7 +140,7 @@ namespace MasterySkillApp.Services
         }
 
         // POST: Metodo para enviar un punto a un usuario
-        public async Task<string> SendAttrPoint(UserModel argUser, BasicAttrModel argBasicAttr)
+        public async Task<string> SendAttrPoint(UserModel argUser, BasicAttrModel argBasicAttr, string message)
         {
             // Debo agregar un Handler cuando las respuesas del servidor son fallidas
             // Solucion temporal 

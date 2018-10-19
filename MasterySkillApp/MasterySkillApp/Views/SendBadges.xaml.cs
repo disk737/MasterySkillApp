@@ -70,7 +70,7 @@ namespace MasterySkillApp.Views
 
             var attrSelected = e.SelectedItem as BasicAttrModel;
 
-
+            // Creo un objeto de configuracion
             var promptConfig = new PromptConfig();
             promptConfig.InputType = InputType.Name;
             promptConfig.IsCancellable = true;
@@ -81,10 +81,21 @@ namespace MasterySkillApp.Views
             promptConfig.OkText = "Enviar";
             promptConfig.CancelText = "Cancelar";
 
+            // Despliego el PopUp
             var result = await UserDialogs.Instance.PromptAsync(promptConfig);
             if (result.Ok)
             {
-                var Text = result.Text;
+                //var Text = result.Text;
+
+                // Invoco el servicio para el envio de una medalla a un usuario
+                var resFail = await _badgeServices.SendAttrPoint(userModel,attrSelected, result.Text);
+
+                Analytics.TrackEvent("BadgeSended");
+
+                // Reviso si hubo algun fallo
+                if (resFail != "")
+                    await DisplayAlert("Oooooppsss, fallo en el envio",resFail, "OK");
+
             }
 
 
