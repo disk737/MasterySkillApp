@@ -60,5 +60,13 @@ namespace MasterySkillApp.Views
             ListUserTeam.SelectedItem = null;
 
         }
+
+        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // Devuelvo la lista de nombres filtrada
+            List<UserModel> sortListModel = MasterySingleton.Instance._listUserModel;
+
+            ListUserTeam.ItemsSource = sortListModel.Where(c => c.userName.ToUpper().StartsWith(e.NewTextValue.ToUpper()));
+        }
     }
 }
