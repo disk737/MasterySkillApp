@@ -14,5 +14,6 @@ namespace MasterySkillApp.Models
     {
         public string userName { get; set; }
         public string attrDetailDate { get; set; }
+        public string attrDetailMessage { get; set; }
     }
 }

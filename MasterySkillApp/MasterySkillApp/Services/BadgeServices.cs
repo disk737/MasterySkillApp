@@ -140,7 +140,7 @@ namespace MasterySkillApp.Services
         }
 
         // POST: Metodo para enviar un punto a un usuario
-        public async Task<string> SendAttrPoint(UserModel argUser, BasicAttrModel argBasicAttr)
+        public async Task<string> SendAttrPoint(UserModel argUser, BasicAttrModel argBasicAttr, string argMessage)
         {
             // Debo agregar un Handler cuando las respuesas del servidor son fallidas
             // Solucion temporal 
@@ -150,7 +150,7 @@ namespace MasterySkillApp.Services
             var uri = GetUserToken(Constans.SendAttrPoint, ref client);
 
             // Creo el objeto que voy a Serializar
-            var attrPoint = new SendAttrModel(argUser.userUUID, argBasicAttr.basicAttrID);
+            var attrPoint = new SendAttrModel(argUser.userUUID, argBasicAttr.basicAttrID, argMessage);
 
             // Genero el Body de la peticion
             var BodyRequest = new StringContent(JsonConvert.SerializeObject(attrPoint), Encoding.UTF8, Constans.AplicationJson);

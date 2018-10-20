@@ -1,4 +1,5 @@
-﻿using MasterySkillApp.Models;
+﻿using Acr.UserDialogs;
+using MasterySkillApp.Models;
 using MasterySkillApp.Services;
 using Microsoft.AppCenter.Analytics;
 using System;
@@ -69,20 +70,35 @@ namespace MasterySkillApp.Views
 
             var attrSelected = e.SelectedItem as BasicAttrModel;
 
-            var sendRes = await DisplayAlert(string.Format("Medalla {0}", attrSelected.attrName), string.Format("Enviar a {0}?",userModel.userName),"Enviar","Cancel");
+            // Creo un objeto de configuracion
+            var promptConfig = new PromptConfig();
+            promptConfig.InputType = InputType.Name;
+            promptConfig.IsCancellable = true;
 
-            // Evaluo la respuesta del usuario
-            if (sendRes)
+            promptConfig.Title = string.Format("Medalla {0}", attrSelected.attrName);
+            promptConfig.Message = string.Format("Enviar a {0}?", userModel.userName);
+            promptConfig.Placeholder = "Mensaje Opcional";
+            promptConfig.OkText = "Enviar";
+            promptConfig.CancelText = "Cancelar";
+            promptConfig.SetMaxLength(255);
+
+            // Despliego el PopUp
+            var result = await UserDialogs.Instance.PromptAsync(promptConfig);
+            if (result.Ok)
             {
+                //var Text = result.Text;
+
                 // Invoco el servicio para el envio de una medalla a un usuario
-                var resFail = await _badgeServices.SendAttrPoint(userModel,attrSelected);
+                var resFail = await _badgeServices.SendAttrPoint(userModel,attrSelected, result.Text);
 
                 Analytics.TrackEvent("BadgeSended");
 
                 // Reviso si hubo algun fallo
                 if (resFail != "")
-                    await DisplayAlert("Oooooppsss",resFail, "OK");
+                    await DisplayAlert("Oooooppsss, fallo en el envio",resFail, "OK");
+
             }
+
         }
     }
 }
