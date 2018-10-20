@@ -9,7 +9,7 @@
             <StackLayout VerticalOptions="Fill" BackgroundColor="{StaticResource CreamColor}">
 
                 <Image Source="ImgUnderConstruction.png" VerticalOptions="CenterAndExpand"/>
-                <Label Text="V1.5" VerticalOptions="End" HorizontalOptions="End"/>
+                <Label Text="V1.6" VerticalOptions="End" HorizontalOptions="End"/>
 
             </StackLayout>
         </ContentPage>

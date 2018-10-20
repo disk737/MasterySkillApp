@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.5" package="com.Assemble.MasterySkillApp" android:installLocation="auto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.6" package="com.Assemble.MasterySkillApp" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="18" android:targetSdkVersion="27" />
-	<application android:label="Insert Name Here!" android:icon="@drawable/ImgBadge_R44">
+	<application android:label="Medal Game" android:icon="@drawable/ImgBadge_R44">
 		<!-- AppCenter Lines -->
 		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
 		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:exported="true" android:permission="com.google.android.c2dm.permission.SEND">
