@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1.7" android:versionName="1.7" package="com.Assemble.MasterySkillApp" android:installLocation="auto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.7" package="com.Assemble.MasterySkillApp" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="18" android:targetSdkVersion="27" />
 	<application android:label="Medal Game" android:icon="@drawable/ImgBadge_R44">
 		<!-- AppCenter Lines -->
