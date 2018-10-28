@@ -10,11 +10,13 @@
             <Color x:Key="CreamColor">#FCD581</Color>
             <Color x:Key="RedAppColor">#D52941</Color>
             <Color x:Key="DarkRedColor">#990D35</Color>
+            <Color x:Key="BlueGreen">#0FA3B1</Color>
             <Color x:Key="DarkGrayColor">#1D201F</Color>
+            <Color x:Key="SmokyBlack">#0A0908</Color>
 
             <!-- Styles -->
             <Style TargetType="NavigationPage">
-                <Setter Property="BarBackgroundColor" Value="{StaticResource DarkGrayColor}"/>
+                <Setter Property="BarBackgroundColor" Value="{StaticResource SmokyBlack}"/>
                 <Setter Property="BarTextColor" Value="White"/>
             </Style>
             <!-- Styles -->

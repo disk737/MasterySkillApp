@@ -9,7 +9,7 @@ namespace MasterySkillApp.Models
         public List<UserModel> UserModels { get; set; }
     }
 
-    public class UserModel
+    public class UserModel : BaseResponse
     {
         public string userEmail { get; set; }
         public string userPassword { get; set; }
@@ -17,5 +17,7 @@ namespace MasterySkillApp.Models
         public string userName { get; set; }
         public string userStatus { get; set; }
         public string userDevice { get; set; }
+        public string userGroup { get; set; }
+        public string userTitle { get; set; }
     }
 }
