@@ -13,22 +13,38 @@
 
                 <BoxView HeightRequest="1" Color="{StaticResource BlueGreen}"/>
                 
-                <Label Text="Juan Jose Muñoz" 
+                <Label Text="{Binding userName}" 
                        FontSize="Large" 
                        FontAttributes="Bold" 
                        HorizontalTextAlignment="Center"
                        TextColor="White"/>
-                
-                <Label Text="&quot;The Manager&quot;" 
-                       FontSize="Medium" 
+
+                <Label FontSize="Medium" 
                        FontAttributes="Italic" 
                        HorizontalTextAlignment="Center"
-                       TextColor="White"/>
-                
-                <Label Text="Welcome to my APP" 
+                       TextColor="White"
+                       IsVisible="{Binding userTitle, Converter={StaticResource StringNullOrEmptyBoolConverter}}">
+
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="&quot;"/>
+                            <Span Text="{Binding userTitle}"/>
+                            <Span Text="&quot;"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label Text="{Binding userStatus}" 
                        FontSize="Small" 
                        HorizontalTextAlignment="Center"
-                       TextColor="White"/>
+                       TextColor="White"
+                       IsVisible="{Binding userStatus, Converter={StaticResource StringNullOrEmptyBoolConverter}}"/>
+
+                <Label Text="{Binding userGroup}" 
+                       FontSize="Small" 
+                       HorizontalTextAlignment="Center"
+                       TextColor="White"
+                       IsVisible="{Binding userGroup, Converter={StaticResource StringNullOrEmptyBoolConverter}}"/>
 
                 <BoxView HeightRequest="1" Color="{StaticResource BlueGreen}"/>
 

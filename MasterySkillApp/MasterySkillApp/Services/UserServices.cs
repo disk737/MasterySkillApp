@@ -81,6 +81,7 @@ namespace MasterySkillApp.Services
 
         }
 
+        // GET: Obtengo todos los usuarios que estan dentro de la aplicacion
         public async Task<ListUserModel> GetUserModels()
         {
             // Lista para guarda la respuesta del servicio
@@ -91,6 +92,44 @@ namespace MasterySkillApp.Services
 
             // Indico que se realiza una peticion
             Debug.WriteLine("Peticion GetUserModels");
+
+            try
+            {
+                var response = await client.GetAsync(uri);
+                // Guardo la respuesta del servidor
+                DataResponse.StatusCode = response.StatusCode;
+
+                // Espero una respuesta positiva del servidor (200)
+                if (!response.IsSuccessStatusCode)
+                    return DataResponse;
+
+
+                var content = await response.Content.ReadAsStringAsync();
+
+                // Deserializo la respuesta del servidor en un Json
+                DataResponse.UserModels = (JsonConvert.DeserializeObject<ListUserModel>(content)).UserModels;
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"				ERROR {0}", ex.Message);
+                Crashes.TrackError(ex);
+            }
+
+            return DataResponse;
+        }
+
+        // GET: Obtengo todos los usuarios que estan dentro de la aplicacion
+        public async Task<ListUserModel> GetUserInfo()
+        {
+            // Lista para guarda la respuesta del servicio
+            ListUserModel DataResponse = new ListUserModel();
+
+            // Construyo la URI a consultar
+            var uri = GetUserToken(Constans.GetUserInfo, ref client);
+
+            // Indico que se realiza una peticion
+            Debug.WriteLine("Peticion GetUserInfo");
 
             try
             {

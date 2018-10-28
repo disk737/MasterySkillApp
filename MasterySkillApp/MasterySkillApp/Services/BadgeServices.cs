@@ -107,7 +107,7 @@ namespace MasterySkillApp.Services
             ListDetailAttr DataResponse = new ListDetailAttr();
 
             // Construyo la URI a consultar
-            var uri = GetUserToken(Constans.getDetailCount, ref client);
+            var uri = GetUserToken(Constans.GetDetailCount, ref client);
 
             // Indico que se realiza una peticion
             Debug.WriteLine("Peticion GetDetailCount");
