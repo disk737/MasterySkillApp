@@ -142,10 +142,13 @@
     <AndroidResource Include="Resources\drawable\ImgPasion_R.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ImgBadge_R44.png" />
+    <AndroidResource Include="Resources\drawable\ImgUnderConstruction.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ImgUnderConstruction.png" />
+    <AndroidResource Include="Resources\drawable\ImgBadge_R48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\HonorificLogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -6,20 +6,20 @@
              NavigationPage.HasNavigationBar="False">
     
     <ContentPage.Content>
-        
+
         <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="20">
 
-            <Label Text="\{Insert a name here\}" 
+            <Label Text="Honorific!" 
                    HorizontalOptions="Center" 
-                   FontSize="Large" 
+                   FontSize="50" 
                    TextColor="{StaticResource DarkGrayColor}"
                    FontAttributes="Bold"/>
 
-            <Image Source="ImgBadgeTest.png" 
+            <Image Source="HonorificLogo.png" 
                    WidthRequest="80"
                    HorizontalOptions="Center"/>
 
-            <Entry x:Name="EntryEmail" Placeholder="Email" Keyboard="Email" />
+            <Entry x:Name="EntryEmail" Placeholder="Email" Keyboard="Email"/>
 
             <Entry x:Name="EntryPassword" Placeholder="Password" IsPassword="True"/>
 
