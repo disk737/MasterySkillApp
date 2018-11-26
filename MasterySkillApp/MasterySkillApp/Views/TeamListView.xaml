@@ -13,7 +13,7 @@
                         <ImageCell ImageSource="ImgUserCircle.png"
                                Text="{Binding userName}"
                                TextColor="{StaticResource DarkGrayColor}"
-                               Detail="{Binding userStatus}"
+                               Detail="{Binding userFullDetail}"
                                DetailColor="{StaticResource RedAppColor}"/>
 
                     </DataTemplate>

@@ -19,5 +19,7 @@ namespace MasterySkillApp.Models
         public string userDevice { get; set; }
         public string userGroup { get; set; }
         public string userTitle { get; set; }
+        public string userFullDetail => String.IsNullOrEmpty(userTitle) ? userStatus : String.Format("{0} \"{1}\"", userStatus, userTitle); // Explicacion: Logica ? Verdadero : Falso
+
     }
 }
