@@ -5,7 +5,7 @@
     <ContentPage.Content>
 
         <StackLayout>
-            <SearchBar Placeholder="Buscar por nombre..." TextChanged="SearchBar_TextChanged"/>
+            <SearchBar Placeholder="Buscar por nombre..." TextChanged="SearchBar_TextChanged" HeightRequest="48"/>
             
             <ListView x:Name="ListUserTeam" ItemSelected="ListUsersBadges_ItemSelected">
                 <ListView.ItemTemplate>
