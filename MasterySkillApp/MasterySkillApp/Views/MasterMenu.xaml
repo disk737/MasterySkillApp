@@ -48,7 +48,7 @@
 
                 <BoxView HeightRequest="1" Color="{StaticResource BlueGreen}"/>
 
-                <Label Text="V1.7" VerticalOptions="End" HorizontalOptions="End" TextColor="White"/>
+                <Label Text="V1.9" VerticalOptions="End" HorizontalOptions="End" TextColor="White"/>
 
             </StackLayout>
         </ContentPage>
