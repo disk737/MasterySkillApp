@@ -19,6 +19,7 @@ namespace MasterySkillApp
         public static string SendAttrPoint = "/mastery/user/sendAttrPoint";
         public static string GetDetailCount = "/mastery/user/getDetailCount";
         public static string GetUserInfo = "/mastery/user/getUserInfo";
+        public static string UpdateUserStatus = "/mastery/user/updateStatus";
 
 
         // Cadenas que guardan la informacion del usuario

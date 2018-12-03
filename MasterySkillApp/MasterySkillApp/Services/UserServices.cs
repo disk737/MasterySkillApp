@@ -119,7 +119,7 @@ namespace MasterySkillApp.Services
             return DataResponse;
         }
 
-        // GET: Obtengo todos los usuarios que estan dentro de la aplicacion
+        // GET: Obtengo la informacion del usuario logueado
         public async Task<ListUserModel> GetUserInfo()
         {
             // Lista para guarda la respuesta del servicio

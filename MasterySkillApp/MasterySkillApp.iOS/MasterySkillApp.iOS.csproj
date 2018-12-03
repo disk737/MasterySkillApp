@@ -187,9 +187,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ImgBadgeTest.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\ImgCom_R.png" />
   </ItemGroup>
   <ItemGroup>
@@ -215,5 +212,8 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\HonorificLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ImgEdit_R15.png" />
   </ItemGroup>
 </Project>

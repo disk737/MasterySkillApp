@@ -1,4 +1,5 @@
-﻿using MasterySkillApp.Models;
+﻿using MasterySkillApp.Entitys;
+using MasterySkillApp.Models;
 using Microsoft.AppCenter.Crashes;
 using Newtonsoft.Json;
 using System;
@@ -57,7 +58,6 @@ namespace MasterySkillApp.Services
         }
 
         // GET: Metodo para obtener los puntos en cada atributo basico
-        //public async Task<List<BasicAttrModel>> GetAttrPoints()
         public async Task<ListAttrPoints> GetAttrPoints()
         {
             // Lista para guarda la respuesta del servicio
@@ -162,6 +162,43 @@ namespace MasterySkillApp.Services
             try
             {
                 var response = await client.PostAsync(uri, BodyRequest);
+
+                // Debo agregar un Handler cuando las respuesas del servidor son fallidas
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"				ERROR {0}", ex.Message);
+                Crashes.TrackError(ex);
+                resFail = ex.Message;
+            }
+
+            return resFail;
+        }
+
+        // PUT: Metodo para cambiar el estado del usuario
+        public async Task<string> UpdateUserStatus(string argMessage)
+        {
+            // Debo agregar un Handler cuando las respuesas del servidor son fallidas
+            // Solucion temporal 
+            string resFail = "";
+
+            // Construyo la URI a consultar
+            var uri = GetUserToken(Constans.UpdateUserStatus, ref client);
+
+            // Creo el objeto que voy a Serializar
+            var userStatus = new SendUserStatus(argMessage);
+
+            // Genero el Body de la peticion
+            var BodyRequest = new StringContent(JsonConvert.SerializeObject(userStatus), Encoding.UTF8, Constans.AplicationJson);
+
+            // Indico que se realiza una peticion
+            Debug.WriteLine("Peticion UpdateUserStatus");
+
+            // Hago la llamada al WS
+            try
+            {
+                var response = await client.PutAsync(uri, BodyRequest);
 
                 // Debo agregar un Handler cuando las respuesas del servidor son fallidas
 
