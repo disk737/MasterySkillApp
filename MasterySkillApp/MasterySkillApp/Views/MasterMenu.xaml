@@ -34,11 +34,26 @@
                     </Label.FormattedText>
                 </Label>
 
-                <Label Text="{Binding userStatus}" 
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    
+                    <Label x:Name="LabelStatus" Text="{Binding userStatus}"
+                           FontSize="Small" 
+                           HorizontalTextAlignment="Center"
+                           TextColor="White"
+                           IsVisible="{Binding userStatus, Converter={StaticResource StringNullOrEmptyBoolConverter}}"/>
+
+                    <Button Image="ImgEdit_R15.png"
+                            HeightRequest="16"
+                            WidthRequest="30"
+                            BackgroundColor="Transparent"
+                            Clicked="EditStatus_Clicked"/>
+                </StackLayout>
+
+                <Label Text="Test Text" 
                        FontSize="Small" 
                        HorizontalTextAlignment="Center"
                        TextColor="White"
-                       IsVisible="{Binding userStatus, Converter={StaticResource StringNullOrEmptyBoolConverter}}"/>
+                       />
 
                 <Label Text="{Binding userGroup}" 
                        FontSize="Small" 
