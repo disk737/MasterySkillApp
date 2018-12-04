@@ -35,7 +35,7 @@
                 </Label>
 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                    
+
                     <Label x:Name="LabelStatus" Text="{Binding userStatus}"
                            FontSize="Small" 
                            HorizontalTextAlignment="Center"
@@ -49,12 +49,6 @@
                             Clicked="EditStatus_Clicked"/>
                 </StackLayout>
 
-                <Label Text="Test Text" 
-                       FontSize="Small" 
-                       HorizontalTextAlignment="Center"
-                       TextColor="White"
-                       />
-
                 <Label Text="{Binding userGroup}" 
                        FontSize="Small" 
                        HorizontalTextAlignment="Center"
@@ -62,6 +56,13 @@
                        IsVisible="{Binding userGroup, Converter={StaticResource StringNullOrEmptyBoolConverter}}"/>
 
                 <BoxView HeightRequest="1" Color="{StaticResource BlueGreen}"/>
+
+                <Button Text="Cambiar contraseña"
+                        TextColor="{StaticResource WhiteColor}"
+                        BorderColor="{StaticResource WhiteColor}"
+                        BorderWidth="2"
+                        BackgroundColor="{StaticResource DarkGrayColor}"
+                        Clicked="ChangePassword_Clicked"/>
 
                 <Label Text="V1.9" VerticalOptions="End" HorizontalOptions="End" TextColor="White"/>
 

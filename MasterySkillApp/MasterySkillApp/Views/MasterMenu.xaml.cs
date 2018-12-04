@@ -74,5 +74,11 @@ namespace MasterySkillApp.Views
 
             }
         }
+
+        private void ChangePassword_Clicked(object sender, EventArgs e)
+        {
+            // Llamo la vista encargada de cambiar la contraseña
+            Navigation.PushModalAsync(new ChangePasswordView());
+        }
     }
 }
