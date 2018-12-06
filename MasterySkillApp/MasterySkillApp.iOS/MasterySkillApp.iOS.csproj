@@ -216,4 +216,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\ImgEdit_R15.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ImgLock_R64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ImgThumpsUp_R500.png" />
+  </ItemGroup>
 </Project>

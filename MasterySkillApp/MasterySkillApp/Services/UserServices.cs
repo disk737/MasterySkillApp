@@ -1,11 +1,10 @@
-﻿using MasterySkillApp.Models;
+﻿using MasterySkillApp.Entitys;
+using MasterySkillApp.Models;
 using Microsoft.AppCenter.Crashes;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -156,5 +155,80 @@ namespace MasterySkillApp.Services
 
             return DataResponse;
         }
+
+        // PUT: Metodo para cambiar el estado del usuario
+        public async Task<string> UpdateUserStatus(string argMessage)
+        {
+            // Debo agregar un Handler cuando las respuesas del servidor son fallidas
+            // Solucion temporal 
+            string resFail = "";
+
+            // Construyo la URI a consultar
+            var uri = GetUserToken(Constans.UpdateUserStatus, ref client);
+
+            // Creo el objeto que voy a Serializar
+            var userStatus = new SendUserStatus(argMessage);
+
+            // Genero el Body de la peticion
+            var BodyRequest = new StringContent(JsonConvert.SerializeObject(userStatus), Encoding.UTF8, Constans.AplicationJson);
+
+            // Indico que se realiza una peticion
+            Debug.WriteLine("Peticion UpdateUserStatus");
+
+            // Hago la llamada al WS
+            try
+            {
+                var response = await client.PutAsync(uri, BodyRequest);
+
+                // Debo agregar un Handler cuando las respuesas del servidor son fallidas
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"				ERROR {0}", ex.Message);
+                Crashes.TrackError(ex);
+                resFail = ex.Message;
+            }
+
+            return resFail;
+        }
+
+        // PUT: Metodo para cambiar la contraseña de un usuario
+        public async Task<string> UpdateUserPassword(string argOldPassword, string argNewPassword)
+        {
+            // Debo agregar un Handler cuando las respuesas del servidor son fallidas
+            // Solucion temporal 
+            string resFail = "";
+
+            // Construyo la URI a consultar
+            var uri = GetUserToken(Constans.UpdateUserPassword, ref client);
+
+            // Creo el objeto que voy a Serializar
+            var userPassword = new SendUserPassword(argOldPassword, argNewPassword);
+
+            // Genero el Body de la peticion
+            var BodyRequest = new StringContent(JsonConvert.SerializeObject(userPassword), Encoding.UTF8, Constans.AplicationJson);
+
+            // Indico que se realiza una peticion
+            Debug.WriteLine("Peticion UpdateUserPassword");
+
+            // Hago la llamada al WS
+            try
+            {
+                var response = await client.PutAsync(uri, BodyRequest);
+
+                // Debo agregar un Handler cuando las respuesas del servidor son fallidas
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"				ERROR {0}", ex.Message);
+                Crashes.TrackError(ex);
+                resFail = ex.Message;
+            }
+
+            return resFail;
+        }
+
     }
 }

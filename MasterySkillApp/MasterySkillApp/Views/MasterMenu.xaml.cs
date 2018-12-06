@@ -22,12 +22,15 @@ namespace MasterySkillApp.Views
             MasterBehavior = MasterBehavior.Popover;
         }
 
+        // Creo la clase que contiene los servicios de usuario
+        UserServices _userServices;
+
         protected async override void OnAppearing()
         {
             base.OnAppearing();
 
-            // Creo la clase que contiene los servicios de usuario
-            UserServices _userServices = new UserServices();
+            // Instancio los servicios de usuario
+            _userServices = new UserServices();
 
             var responseUserInfo = await _userServices.GetUserInfo();
 
@@ -54,17 +57,14 @@ namespace MasterySkillApp.Views
             var result = await UserDialogs.Instance.PromptAsync(promptConfig);
             if (result.Ok)
             {
-                // Instancio el controlador de servicios
-                BadgeServices _badgeServices = new BadgeServices();
-
                 var Text = result.Text;
 
                 // Actualizo el estado que el usuario ve en el menu Master
                 MasterySingleton.Instance._userInfo.userStatus = Text;
                 LabelStatus.Text = MasterySingleton.Instance._userInfo.userStatus;
 
-                // Invoco el servicio para la acutalizacion del estado
-                var resFail = await _badgeServices.UpdateUserStatus(Text);
+                // Invoco el servicio para la actualizacion del estado
+                var resFail = await _userServices.UpdateUserStatus(Text);
 
                 Analytics.TrackEvent("User Change Status");
 
