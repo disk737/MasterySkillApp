@@ -19,6 +19,14 @@
                 <Setter Property="BarBackgroundColor" Value="{StaticResource SmokyBlack}"/>
                 <Setter Property="BarTextColor" Value="White"/>
             </Style>
+
+            <Style x:Key="BlackButton" TargetType="Button">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BorderColor" Value="White"/>
+                <Setter Property="BorderWidth" Value="2"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource DarkGrayColor}"/>
+            </Style>
+            
             <!-- Styles -->
             
             <!--Converters-->

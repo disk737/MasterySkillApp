@@ -58,10 +58,7 @@
                 <BoxView HeightRequest="1" Color="{StaticResource BlueGreen}"/>
 
                 <Button Text="Cambiar contraseña"
-                        TextColor="{StaticResource WhiteColor}"
-                        BorderColor="{StaticResource WhiteColor}"
-                        BorderWidth="2"
-                        BackgroundColor="{StaticResource DarkGrayColor}"
+                        Style="{StaticResource BlackButton}"
                         Clicked="ChangePassword_Clicked"/>
 
                 <Label Text="V1.9" VerticalOptions="End" HorizontalOptions="End" TextColor="White"/>

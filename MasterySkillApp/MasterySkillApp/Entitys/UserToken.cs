@@ -4,9 +4,8 @@ using System.Text;
 
 namespace MasterySkillApp.Models
 {
-    public class UserToken
+    public class UserToken : BaseResponse
     {
         public string token { get; set; }
-        public string message { get; set; }
     }
 }

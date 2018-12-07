@@ -194,11 +194,11 @@ namespace MasterySkillApp.Services
         }
 
         // PUT: Metodo para cambiar la contraseña de un usuario
-        public async Task<string> UpdateUserPassword(string argOldPassword, string argNewPassword)
+        public async Task<BaseResponse> UpdateUserPassword(string argOldPassword, string argNewPassword)
         {
             // Debo agregar un Handler cuando las respuesas del servidor son fallidas
             // Solucion temporal 
-            string resFail = "";
+            BaseResponse responseServer = new BaseResponse();
 
             // Construyo la URI a consultar
             var uri = GetUserToken(Constans.UpdateUserPassword, ref client);
@@ -217,17 +217,25 @@ namespace MasterySkillApp.Services
             {
                 var response = await client.PutAsync(uri, BodyRequest);
 
-                // Debo agregar un Handler cuando las respuesas del servidor son fallidas
+                // Leo la cadena de la respuesta
+                var content = await response.Content.ReadAsStringAsync();
+
+                // Deserializo el contenido del mensaje
+                responseServer = JsonConvert.DeserializeObject<BaseResponse>(content);
+
+                responseServer.StatusCode = response.StatusCode;
+                responseServer.IsSuccessStatusCode = response.IsSuccessStatusCode;
 
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(@"				ERROR {0}", ex.Message);
                 Crashes.TrackError(ex);
-                resFail = ex.Message;
+                responseServer.IsSuccessStatusCode = false;
+                responseServer.message = ex.Message;
             }
 
-            return resFail;
+            return responseServer;
         }
 
     }

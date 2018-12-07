@@ -3002,31 +3002,31 @@ namespace MasterySkillApp.Droid
 			public const int ic_vol_type_tv_light = 2130837775;
 			
 			// aapt resource value: 0x7f020110
-			public const int ImgCom_R = 2130837776;
+			public const int ImgApproval_R500 = 2130837776;
 			
 			// aapt resource value: 0x7f020111
-			public const int ImgCoop_R = 2130837777;
+			public const int ImgCom_R = 2130837777;
 			
 			// aapt resource value: 0x7f020112
-			public const int ImgEdit_R15 = 2130837778;
+			public const int ImgCoop_R = 2130837778;
 			
 			// aapt resource value: 0x7f020113
-			public const int ImgLock_R64 = 2130837779;
+			public const int ImgEdit_R15 = 2130837779;
 			
 			// aapt resource value: 0x7f020114
-			public const int ImgLogout = 2130837780;
+			public const int ImgLock_R64 = 2130837780;
 			
 			// aapt resource value: 0x7f020115
-			public const int ImgPasion_R = 2130837781;
+			public const int ImgLogout = 2130837781;
 			
 			// aapt resource value: 0x7f020116
-			public const int ImgSolve_R = 2130837782;
+			public const int ImgPasion_R = 2130837782;
 			
 			// aapt resource value: 0x7f020117
-			public const int ImgTecnique_R = 2130837783;
+			public const int ImgSolve_R = 2130837783;
 			
 			// aapt resource value: 0x7f020118
-			public const int ImgThumpsUp_R500 = 2130837784;
+			public const int ImgTecnique_R = 2130837784;
 			
 			// aapt resource value: 0x7f020119
 			public const int ImgUnderConstruction = 2130837785;
