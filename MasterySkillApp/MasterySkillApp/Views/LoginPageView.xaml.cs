@@ -66,7 +66,7 @@ namespace MasterySkillApp.Views
                 System.Guid? installId = await AppCenter.GetInstallIdAsync();
 
                 // Valido las credenciales ingresadas por el usuario
-                userToken = await _userServices.UserSignIn(EntryEmail.Text, EntryPassword.Text, installId.ToString());
+                userToken = await _userServices.UserSignIn(_EntryEmail.Text, _EntryPassword.Text, installId.ToString());
             };
 
             // Reviso si obtengo un Token o un mensaje de error 
@@ -96,5 +96,9 @@ namespace MasterySkillApp.Views
 
         }
 
+        private void _EntryEmail_Completed(object sender, EventArgs e)
+        {
+            _EntryPassword.Focus();
+        }
     }
 }

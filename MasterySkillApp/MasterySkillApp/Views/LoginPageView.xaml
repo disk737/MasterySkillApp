@@ -19,9 +19,9 @@
                    WidthRequest="80"
                    HorizontalOptions="Center"/>
 
-            <Entry x:Name="EntryEmail" Placeholder="Email" Keyboard="Email"/>
+            <Entry x:Name="_EntryEmail" Placeholder="Email" Keyboard="Email" Completed="_EntryEmail_Completed"/>
 
-            <Entry x:Name="EntryPassword" Placeholder="Password" IsPassword="True"/>
+            <Entry x:Name="_EntryPassword" Placeholder="Password" IsPassword="True"/>
 
             <StackLayout HorizontalOptions="End" Orientation="Horizontal">
 
@@ -31,7 +31,13 @@
 
             </StackLayout>
 
-            <Button Text="Login" HorizontalOptions="Fill" Clicked="LoginHandler_Clicked"/>
+            <Button Text="Login"
+                    TextColor="Black"
+                    HorizontalOptions="Fill" 
+                    BorderWidth="2"
+                    BorderColor="Black"
+                    BackgroundColor="White"
+                    Clicked="LoginHandler_Clicked"/>
 
             <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="Gray"/>
 
