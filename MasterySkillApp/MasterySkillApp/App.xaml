@@ -26,7 +26,14 @@
                 <Setter Property="BorderWidth" Value="2"/>
                 <Setter Property="BackgroundColor" Value="{StaticResource DarkGrayColor}"/>
             </Style>
-            
+
+            <Style x:Key="WhiteButton" TargetType="Button">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="BorderColor" Value="Black"/>
+                <Setter Property="BorderWidth" Value="2"/>
+                <Setter Property="BackgroundColor" Value="White"/>
+            </Style>
+
             <!-- Styles -->
             
             <!--Converters-->

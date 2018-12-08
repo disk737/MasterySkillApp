@@ -56,6 +56,29 @@ namespace MasterySkillApp.Views
 
         async private void LoginHandler_Clicked(object sender, EventArgs e)
         {
+            // Verifico que se ingrese la informacion de Correo
+            if (string.IsNullOrEmpty(_EntryEmail.Text))
+            {
+                _LabelEmail.IsVisible = true;
+                return;
+            }
+            else
+            {
+                _LabelEmail.IsVisible = false;
+            }
+
+            // Verifico que se ingrese la informacion de contraseña
+            if (string.IsNullOrEmpty(_EntryPassword.Text))
+            {
+                _LabelPassword.IsVisible = true;
+                return;
+            }
+            else
+            {
+                _LabelPassword.IsVisible = false;
+            }
+
+
             // Creo el objeto para guardar el token del usuario
             UserToken userToken;
 
@@ -69,36 +92,43 @@ namespace MasterySkillApp.Views
                 userToken = await _userServices.UserSignIn(_EntryEmail.Text, _EntryPassword.Text, installId.ToString());
             };
 
-            // Reviso si obtengo un Token o un mensaje de error 
-            if (userToken.token != null)
+            // Reviso si encontre mensajes de error
+            if (!userToken.IsSuccessStatusCode)
             {
-                // Guardo el token generado para el usuario
-                Application.Current.Properties[Constans.UserTokenString] = userToken.token;
-
-                // Si el usuario decidio guardar sus credenciales, procedo a guardarlas
-                if (SaveCredencials.IsToggled == true)
-                    Application.Current.Properties[Constans.SaveCredentials] = Constans.SaveActive;
-                else
-                    Application.Current.Properties[Constans.SaveCredentials] = Constans.SaveUnactive;
-
-                // Llamo la pagina principal de Tabs
-                //await Navigation.PushAsync(new MasterTabView());
-                //Application.Current.MainPage = new NavigationPage(new MasterTabView());
-                //Application.Current.MainPage = new NavigationPage(new MasterMenu());
-                Application.Current.MainPage = new MasterMenu();
-            }
-            else
-            {
-                // Esto lo puedo cambiar con ACR
                 // Usuario y/o contraseña no corresponde
-                await DisplayAlert("Mastery", userToken.message, "OK");
+                await DisplayAlert("Oppssss", userToken.message, "OK");
+                return;
             }
 
+            // Reviso si tengo un token que pueda usar
+            if (userToken.token == null)
+            {
+                // Usuario y/o contraseña no corresponde
+                await DisplayAlert("Oppssss", "Tenemos un problema con el Token. Contacta al Admin", "OK");
+                return;
+            }
+
+            // Guardo el token generado para el usuario
+            Application.Current.Properties[Constans.UserTokenString] = userToken.token;
+
+            // Si el usuario decidio guardar sus credenciales, procedo a guardarlas
+            if (SaveCredencials.IsToggled == true)
+                Application.Current.Properties[Constans.SaveCredentials] = Constans.SaveActive;
+            else
+                Application.Current.Properties[Constans.SaveCredentials] = Constans.SaveUnactive;
+
+             // Llamo la pagina principal de Tabs
+             Application.Current.MainPage = new MasterMenu();
         }
 
         private void _EntryEmail_Completed(object sender, EventArgs e)
         {
             _EntryPassword.Focus();
+        }
+
+        private void CrearCuenta_Clicked(object sender, EventArgs e)
+        {
+            DisplayAlert("Lo sentimos...", "Proximamente tendremos esta opcion", "Ok");
         }
     }
 }
