@@ -128,7 +128,7 @@ namespace MasterySkillApp.Views
 
         private void CrearCuenta_Clicked(object sender, EventArgs e)
         {
-            DisplayAlert("Lo sentimos...", "Proximamente tendremos esta opcion", "Ok");
+            Navigation.PushAsync(new CreateAccountView());
         }
     }
 }
