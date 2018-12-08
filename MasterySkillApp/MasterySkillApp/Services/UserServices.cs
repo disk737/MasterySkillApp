@@ -45,11 +45,10 @@ namespace MasterySkillApp.Services
                 // Leo la cadena de la respuesta
                 var content = await response.Content.ReadAsStringAsync();
 
-                if (response.IsSuccessStatusCode)
-                {
-                    // Aqui voy a recibir el token o el mensaje de error dependiendo del caso
-                    Token = JsonConvert.DeserializeObject<UserToken>(content);
-                }
+                // Aqui voy a recibir el token o el mensaje de error dependiendo del caso
+                Token = JsonConvert.DeserializeObject<UserToken>(content);
+                Token.StatusCode = response.StatusCode;
+                Token.IsSuccessStatusCode = response.IsSuccessStatusCode;
 
             }
             catch (Exception ex)
