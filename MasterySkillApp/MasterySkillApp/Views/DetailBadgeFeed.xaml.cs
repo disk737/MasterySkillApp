@@ -16,36 +16,30 @@ namespace MasterySkillApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailBadgeFeed : ContentPage
     {
-
+        // Creo una instancia para los servicios
         BadgeServices _badgeServices;
-        private bool OnlyOnce = false;
+        private bool OnLoad = false;
 
         public DetailBadgeFeed()
         {
             InitializeComponent();
 
             // Instancio el BadgeServices
-            _badgeServices = new BadgeServices();
-
-            // Reviso si la lista ya fue llenada para que no se vuelva a llenar
-            if (OnlyOnce)   
-                return;
-
-            // Cambio la bandera para que solo se ejecute una sola vez
-            OnlyOnce = true;
-
-            ListNewsFeed.BeginRefresh();
-
-            RefreshNewsFeed();
-
+            _badgeServices = new BadgeServices();           
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            ListNewsFeed.BeginRefresh();
+            RefreshNewsFeed();
+
+            // Cambio el estado de la bandera para que la View sepa que ya se hizo la carga inicial
+            OnLoad = true;
+
             Analytics.TrackEvent("NewsFeed");
         }
-
 
         private void ListNewsFeed_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
@@ -54,13 +48,15 @@ namespace MasterySkillApp.Views
 
         private void ListNewsFeed_Refreshing(object sender, EventArgs e)
         {
+            if (!OnLoad)
+                return;
+
             RefreshNewsFeed();
         }
 
         private async void RefreshNewsFeed()
         {
-            // Vinculo el Source a la lista
-
+            // Hago la llamada al WS
             ListDetailAttr response = await _badgeServices.GetDetailCount();
 
             ListNewsFeed.EndRefresh();

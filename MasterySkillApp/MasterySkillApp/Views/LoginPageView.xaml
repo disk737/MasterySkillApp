@@ -7,41 +7,44 @@
     
     <ContentPage.Content>
 
-        <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="20">
+        <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand">
 
             <Label Text="Honorific!" 
                    HorizontalOptions="Center" 
                    FontSize="50" 
                    TextColor="{StaticResource DarkGrayColor}"
-                   FontAttributes="Bold"/>
+                   FontAttributes="Bold"
+                   Margin="20"/>
 
             <Image Source="HonorificLogo.png" 
                    WidthRequest="80"
-                   HorizontalOptions="Center"/>
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,20"/>
 
             <Entry x:Name="_EntryEmail" Placeholder="Email" Keyboard="Email" Completed="_EntryEmail_Completed"/>
 
-            <Entry x:Name="_EntryPassword" Placeholder="Password" IsPassword="True"/>
+            <Label x:Name="_LabelEmail" Text="*Ingresa tu email" TextColor="Red" IsVisible="False"/>
 
-            <StackLayout HorizontalOptions="End" Orientation="Horizontal">
+            <Entry x:Name="_EntryPassword" Placeholder="Password" IsPassword="True" Margin="0,10,0,0"/>
 
-                <Label Text="Remember me!"/>
+            <Label x:Name="_LabelPassword" Text="*Ingresa tu contraseña" TextColor="Red" IsVisible="False"/>
+            
+            <StackLayout HorizontalOptions="End" Orientation="Horizontal" Margin="0,10,0,10">
+
+                <Label Text="Recuerdame!"/>
 
                 <Switch x:Name="SaveCredencials" IsToggled="False"/>
 
             </StackLayout>
 
             <Button Text="Login"
-                    TextColor="Black"
+                    Style="{StaticResource WhiteButton}"
                     HorizontalOptions="Fill" 
-                    BorderWidth="2"
-                    BorderColor="Black"
-                    BackgroundColor="White"
                     Clicked="LoginHandler_Clicked"/>
 
             <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="Gray"/>
 
-            <Label Text="Sign Up" HorizontalOptions="Center" TextColor="{StaticResource DarkGrayColor}" IsVisible="False"/>
+            <Button Text="Crear cuenta" Style="{StaticResource WhiteButton}" Clicked="CrearCuenta_Clicked"/>
 
         </StackLayout>
         

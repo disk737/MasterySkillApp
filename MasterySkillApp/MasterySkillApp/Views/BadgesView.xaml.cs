@@ -18,33 +18,28 @@ namespace MasterySkillApp.Views
     {
         // Creo una instancia para los servicios
         private BadgeServices _badgeServices;
-        private bool OnlyOnce = false;
-
+        private bool OnLoad = false;
 
         public BadgesView ()
 		{
 			InitializeComponent ();
+
             // Instancio el BadgeServices
             _badgeServices = new BadgeServices();
-
-            // Reviso si la lista ya fue llenada para que no se vuelva a llenar
-            if (OnlyOnce)  
-                return;
-                
-            // Cambio la bandera para que solo se ejecute una sola vez
-            OnlyOnce = true;
-
-            badgesList.BeginRefresh();
-
-            // Llamo el metodo para refrescar la lista
-            RefreshAttrList();
-
         }
 
         protected override void OnAppearing()
-        {
-            Analytics.TrackEvent("BadgesView");
+        {          
             base.OnAppearing();
+
+            // Llamo el metodo para refrescar la lista
+            badgesList.BeginRefresh();
+            RefreshAttrList();
+
+            // Cambio el estado de la bandera para que la View sepa que ya se hizo la carga inicial
+            OnLoad = true;
+
+            Analytics.TrackEvent("BadgesView");
         }
 
         private void badgesList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -54,14 +49,15 @@ namespace MasterySkillApp.Views
 
         private void badgesList_Refreshing(object sender, EventArgs e)
         {
+            if (!OnLoad)
+                return;
+
             RefreshAttrList();
         }
 
         private async void RefreshAttrList()
         {
-
             // Vinculo el Source a la lista
-            //badgesList.ItemsSource = await _badgeServices.GetAttrPoints();
             ListAttrPoints response = await _badgeServices.GetAttrPoints();
             badgesList.EndRefresh();
             
