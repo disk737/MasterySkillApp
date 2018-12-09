@@ -3,10 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MasterySkillApp.Views.CreateAccountView">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout VerticalOptions="CenterAndExpand" Padding="20,10,20,10" BackgroundColor="Aqua">
+
+            <Image Source="ImgCreateAccount_R500.png" WidthRequest="100" BackgroundColor="Yellow"/>
+            <Label Text="Crea tu cuenta con nosotros" FontSize="Medium" TextColor="Black"/>
+
+            <Entry x:Name="_EntryUserFirstName" Placeholder="Nombre" Completed="EntryUserFirstName_Completed"/>
+            <Entry x:Name="_EntryUserLastName" Placeholder="Apellido" Completed="EntryUserLastName_Completed"/>
+
+            <Entry x:Name="_EntryEmail" Placeholder="Correo Electronico" Keyboard="Email" Completed="EntryEmail_Completed"/>
+            <Entry x:Name="_EntryPassword" Placeholder="Contraseña" IsPassword="True"/>
+
+            <Label x:Name="_LabelAllFields" Text="*Todos tus datos son necesarios para crear la cuenta" 
+                   TextColor="Red" HorizontalTextAlignment="Center" IsVisible="True"/>
+
+            <Button Text="Crear cuenta" Style="{StaticResource WhiteButton}" Clicked="SignUpBtn_Clicked"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

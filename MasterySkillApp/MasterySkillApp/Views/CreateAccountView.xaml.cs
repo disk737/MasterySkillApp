@@ -16,5 +16,26 @@ namespace MasterySkillApp.Views
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private void SignUpBtn_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EntryUserFirstName_Completed(object sender, EventArgs e)
+        {
+            _EntryUserLastName.Focus();
+        }
+
+        private void EntryUserLastName_Completed(object sender, EventArgs e)
+        {
+            _EntryEmail.Focus();
+        }
+
+        private void EntryEmail_Completed(object sender, EventArgs e)
+        {
+            _EntryPassword.Focus();
+        }
+
+    }
 }

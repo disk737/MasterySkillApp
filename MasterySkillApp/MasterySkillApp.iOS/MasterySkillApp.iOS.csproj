@@ -222,4 +222,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\ImgApproval_R500.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ImgCreateAccount_R500.png" />
+  </ItemGroup>
 </Project>
