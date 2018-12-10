@@ -21,7 +21,7 @@
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="Felicitaciones, " TextColor="{StaticResource DarkGrayColor}"  />
-                                            <Span Text="{Binding userName}" TextColor="{StaticResource RedAppColor}"  />
+                                            <Span Text="{Binding userFullName}" TextColor="{StaticResource RedAppColor}"  />
                                             <Span Text=" te ha enviado una medalla " TextColor="{StaticResource DarkGrayColor}"  />
                                             <Span Text="{Binding attrName}" TextColor="{StaticResource RedAppColor}"  />
                                         </FormattedString>

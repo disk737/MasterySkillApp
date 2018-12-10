@@ -11,7 +11,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ImageCell ImageSource="ImgUserCircle.png"
-                               Text="{Binding userName}"
+                               Text="{Binding userFullName}"
                                TextColor="{StaticResource DarkGrayColor}"
                                Detail="{Binding userFullDetail}"
                                DetailColor="{StaticResource RedAppColor}"/>
