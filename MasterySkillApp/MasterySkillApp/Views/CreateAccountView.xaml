@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MasterySkillApp.Views.CreateAccountView">
     <ContentPage.Content>
-        <StackLayout VerticalOptions="CenterAndExpand" Padding="20,10,20,10" BackgroundColor="Aqua">
+        <StackLayout VerticalOptions="CenterAndExpand" Padding="20,10,20,10">
 
-            <Image Source="ImgCreateAccount_R500.png" WidthRequest="100" BackgroundColor="Yellow"/>
-            <Label Text="Crea tu cuenta con nosotros" FontSize="Medium" TextColor="Black"/>
+            <Image Source="ImgCreateAccount_R500.png" WidthRequest="100"/>
+            <Label Text="Crea tu cuenta con nosotros" FontSize="Medium" TextColor="Black" HorizontalTextAlignment="Center"/>
 
             <Entry x:Name="_EntryUserFirstName" Placeholder="Nombre" Completed="EntryUserFirstName_Completed"/>
             <Entry x:Name="_EntryUserLastName" Placeholder="Apellido" Completed="EntryUserLastName_Completed"/>

@@ -32,13 +32,17 @@ namespace MasterySkillApp.Views
         {
             base.OnAppearing();
 
-            ListNewsFeed.BeginRefresh();
-            RefreshNewsFeed();
+            Analytics.TrackEvent("NewsFeed");
+
+            if (MasterySingleton.Instance._listDetailAttrModel == null)
+            {
+                ListNewsFeed.BeginRefresh();
+
+                RefreshNewsFeed();
+            }         
 
             // Cambio el estado de la bandera para que la View sepa que ya se hizo la carga inicial
             OnLoad = true;
-
-            Analytics.TrackEvent("NewsFeed");
         }
 
         private void ListNewsFeed_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -77,6 +81,8 @@ namespace MasterySkillApp.Views
                     break;
 
                 default:
+                    // Guardo la respuesta en el Singleton
+                    MasterySingleton.Instance._listDetailAttrModel = response.AttrDetail;
                     ListNewsFeed.ItemsSource = response.AttrDetail;
                     break;
             }
