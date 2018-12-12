@@ -15,7 +15,7 @@
             <Entry x:Name="_EntryPassword" Placeholder="Contraseña" IsPassword="True"/>
 
             <Label x:Name="_LabelAllFields" Text="*Todos tus datos son necesarios para crear la cuenta" 
-                   TextColor="Red" HorizontalTextAlignment="Center" IsVisible="True"/>
+                   TextColor="Red" HorizontalTextAlignment="Center" IsVisible="False"/>
 
             <Button Text="Crear cuenta" Style="{StaticResource WhiteButton}" Clicked="SignUpBtn_Clicked"/>
 
