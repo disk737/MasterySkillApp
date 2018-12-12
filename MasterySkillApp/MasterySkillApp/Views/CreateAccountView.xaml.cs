@@ -19,6 +19,17 @@ namespace MasterySkillApp.Views
 
         private void SignUpBtn_Clicked(object sender, EventArgs e)
         {
+            // Verifico que todos los campos tengan contenido
+            if (string.IsNullOrEmpty(_EntryUserFirstName.Text) || string.IsNullOrEmpty(_EntryUserLastName.Text) || string.IsNullOrEmpty(_EntryEmail.Text) || string.IsNullOrEmpty(_EntryPassword.Text))
+            {
+                _LabelAllFields.IsVisible = true;
+                return;
+            }
+            else
+            {
+                _LabelAllFields.IsVisible = false;
+            }
+
 
         }
 
