@@ -17,6 +17,25 @@ namespace MasterySkillApp.Services
         // Creo el cliente Http para realizar las peticiones
         private HttpClient client = new HttpClient();
 
+        // Metodo para crear una cuenta nueva
+        public async Task<UserToken> UserSignIn(string argUserName, string argUserLastName, string argUserEmail, string argUserPassword, string argInstallationID)
+        {
+            var user = new UserModel
+            {
+                userEmail = argUserEmail,
+                userPassword = argUserPassword,
+                userName = argUserName,
+                userLastName = argUserLastName,
+                userDevice = argInstallationID
+            };
+
+            // Creo el contenedor del Token que voy a retornar
+            UserToken Token = new UserToken();
+
+            return Token;
+        }
+
+
         // Metodo para obtener el Token de Logueo del usuario
         public async Task<UserToken> UserSignIn(string argUserEmail, string argUserPassword, string argInstallationID)
         {
