@@ -108,18 +108,16 @@ namespace MasterySkillApp.Views
                 return;
             }
 
-            // Guardo el token generado para el usuario
-            Application.Current.Properties[Constans.UserTokenString] = userToken.token;
+            // Guardo el token en el dispositivo
+            GeneralServices.SaveCredentialsMethod(userToken.token, SaveCredencials.IsToggled);
+                   
+            // Llamo la pagina principal de Tabs
+            Application.Current.MainPage = new MasterMenu();
 
-            // Si el usuario decidio guardar sus credenciales, procedo a guardarlas
-            if (SaveCredencials.IsToggled == true)
-                Application.Current.Properties[Constans.SaveCredentials] = Constans.SaveActive;
-            else
-                Application.Current.Properties[Constans.SaveCredentials] = Constans.SaveUnactive;
-
-             // Llamo la pagina principal de Tabs
-             Application.Current.MainPage = new MasterMenu();
         }
+
+
+
 
         private void _EntryEmail_Completed(object sender, EventArgs e)
         {

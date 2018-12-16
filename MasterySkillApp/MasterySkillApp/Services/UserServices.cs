@@ -18,7 +18,12 @@ namespace MasterySkillApp.Services
         private HttpClient client = new HttpClient();
 
         // Metodo para crear una cuenta nueva
-        public async Task<UserToken> UserSignIn(string argUserName, string argUserLastName, string argUserEmail, string argUserPassword, string argInstallationID)
+        public async Task<UserToken> UserSignUp(string argUserName, 
+                                                string argUserLastName, 
+                                                string argUserEmail, 
+                                                string argUserPassword, 
+                                                string argCodeGroup, 
+                                                string argInstallationID)
         {
             var user = new UserModel
             {
@@ -26,11 +31,37 @@ namespace MasterySkillApp.Services
                 userPassword = argUserPassword,
                 userName = argUserName,
                 userLastName = argUserLastName,
+                userCodeGroup = argCodeGroup,
                 userDevice = argInstallationID
             };
 
             // Creo el contenedor del Token que voy a retornar
             UserToken Token = new UserToken();
+
+            // Genero el Body de la peticion
+            var BodyRequest = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, Constans.AplicationJson);
+
+            // Construyo la URI que voy a consultar
+            var uri = new Uri(string.Format(Constans.RestUrl + Constans.UserSignUp));
+
+            // Hago la llamada al servicio
+            try
+            {
+                var response = await client.PostAsync(uri, BodyRequest);
+
+                // Leo la cadena en la respuesta
+                var content = await response.Content.ReadAsStringAsync();
+
+                // Aqui voy a recibir el token o el mensaje de error dependiendo del caso
+                Token = JsonConvert.DeserializeObject<UserToken>(content);
+                Token.StatusCode = response.StatusCode;
+                Token.IsSuccessStatusCode = response.IsSuccessStatusCode;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"				ERROR {0}", ex.Message);
+                Crashes.TrackError(ex);
+            }
 
             return Token;
         }

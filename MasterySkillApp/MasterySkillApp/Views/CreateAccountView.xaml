@@ -12,12 +12,14 @@
             <Entry x:Name="_EntryUserLastName" Placeholder="Apellido" Completed="EntryUserLastName_Completed"/>
 
             <Entry x:Name="_EntryEmail" Placeholder="Correo Electronico" Keyboard="Email" Completed="EntryEmail_Completed"/>
-            <Entry x:Name="_EntryPassword" Placeholder="Contraseña" IsPassword="True"/>
+            <Entry x:Name="_EntryPassword" Placeholder="Contraseña" IsPassword="True" Completed="_EntryPassword_Completed"/>
 
+            <Entry x:Name="_EntryGroupCode" Placeholder="Codigo de Grupo" Keyboard="Numeric" MaxLength="4"/>
+            
             <Label x:Name="_LabelAllFields" Text="*Todos tus datos son necesarios para crear la cuenta" 
                    TextColor="Red" HorizontalTextAlignment="Center" IsVisible="False"/>
 
-            <Button Text="Crear cuenta" Style="{StaticResource WhiteButton}" Clicked="SignUpBtn_Clicked"/>
+            <Button Text="Crear cuenta" Style="{StaticResource WhiteButton}" Clicked="SignUpBtn_ClickedAsync"/>
 
         </StackLayout>
     </ContentPage.Content>
