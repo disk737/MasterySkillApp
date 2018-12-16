@@ -11,11 +11,29 @@
 
     </TabbedPage.ToolbarItems>
 
-    <local:DetailBadgeFeed Title="News Feed"  />
+    <local:DetailBadgeFeed Title="News Feed">
+        <local:DetailBadgeFeed.Icon>
+            <OnPlatform x:TypeArguments="FileImageSource" 
+                        Android="IconMegaphoneWhite.png"
+                        iOS="IconMegaphoneBlack.png"/>
+        </local:DetailBadgeFeed.Icon>
+    </local:DetailBadgeFeed>
 
-    <local:BadgesView Title="Medallas"  />
-    
-    <local:TeamListView Title="Tu Equipo!"/>
-    
+    <local:BadgesView Title="Medallas">
+        <local:BadgesView.Icon>
+            <OnPlatform x:TypeArguments="FileImageSource" 
+                        Android="IconMedalWhite.png"
+                        iOS="IconMedalBlack.png"/>
+        </local:BadgesView.Icon>
+    </local:BadgesView>
+
+    <local:TeamListView Title="Tu Equipo!">
+        <local:TeamListView.Icon>
+            <OnPlatform x:TypeArguments="FileImageSource" 
+                        Android="IconPeopleWhite.png"
+                        iOS="IconPeopleBlack.png"/>
+        </local:TeamListView.Icon>
+    </local:TeamListView>
+
 
 </TabbedPage>

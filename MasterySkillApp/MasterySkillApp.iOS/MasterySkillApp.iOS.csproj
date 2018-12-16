@@ -225,4 +225,16 @@
   <ItemGroup>
     <BundleResource Include="Resources\ImgCreateAccount_R500.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\IconMenuWhite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\IconMegaphoneBlack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\IconsMedalBlack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\IconPeopleBlack.png" />
+  </ItemGroup>
 </Project>

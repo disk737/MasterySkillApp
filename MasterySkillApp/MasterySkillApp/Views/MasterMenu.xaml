@@ -2,7 +2,8 @@
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MasterySkillApp.Views"
-             x:Class="MasterySkillApp.Views.MasterMenu">
+             x:Class="MasterySkillApp.Views.MasterMenu"
+             Icon="IconMenuWhite.png">
 
     <MasterDetailPage.Master>
         <ContentPage Title="Master" BackgroundColor="{StaticResource SmokyBlack}">
@@ -61,7 +62,7 @@
                         Style="{StaticResource BlackButton}"
                         Clicked="ChangePassword_Clicked"/>
 
-                <Label Text="V1.9" VerticalOptions="End" HorizontalOptions="End" TextColor="White"/>
+                <Label Text="V1.10" VerticalOptions="End" HorizontalOptions="End" TextColor="White"/>
 
             </StackLayout>
         </ContentPage>
