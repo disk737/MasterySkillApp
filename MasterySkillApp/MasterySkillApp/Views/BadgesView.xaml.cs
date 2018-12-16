@@ -29,17 +29,19 @@ namespace MasterySkillApp.Views
         }
 
         protected override void OnAppearing()
-        {          
+        {
             base.OnAppearing();
 
-            // Llamo el metodo para refrescar la lista
-            badgesList.BeginRefresh();
-            RefreshAttrList();
+            Analytics.TrackEvent("BadgesView");
+            if (MasterySingleton.Instance._listBasicAttrModel == null)
+            {
+                // Llamo el metodo para refrescar la lista
+                badgesList.BeginRefresh();
+                RefreshAttrList();
+            } 
 
             // Cambio el estado de la bandera para que la View sepa que ya se hizo la carga inicial
-            OnLoad = true;
-
-            Analytics.TrackEvent("BadgesView");
+            OnLoad = true;         
         }
 
         private void badgesList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -77,6 +79,7 @@ namespace MasterySkillApp.Views
                     break;
      
                 default:
+                    MasterySingleton.Instance._listBasicAttrModel = response.AttrPoints;
                     badgesList.ItemsSource = response.AttrPoints;
                     break;
             }
