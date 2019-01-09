@@ -33,8 +33,8 @@ namespace MasterySkillApp.Views
             base.OnAppearing();
 
             Analytics.TrackEvent("NewsFeed");
-
-            if (MasterySingleton.Instance._listDetailAttrModel == null)
+            
+            if (MasterySingleton.Instance._listDetailAttrModel == null || ListNewsFeed.ItemsSource == null)
             {
                 ListNewsFeed.BeginRefresh();
 

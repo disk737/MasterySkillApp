@@ -33,7 +33,7 @@ namespace MasterySkillApp.Views
             base.OnAppearing();
 
             Analytics.TrackEvent("BadgesView");
-            if (MasterySingleton.Instance._listBasicAttrModel == null)
+            if (MasterySingleton.Instance._listBasicAttrModel == null || badgesList.ItemsSource == null)
             {
                 // Llamo el metodo para refrescar la lista
                 badgesList.BeginRefresh();
