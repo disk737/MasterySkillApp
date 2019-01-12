@@ -18,7 +18,7 @@ namespace MasterySkillApp.Models
         public string userLastName { get; set; }
         public string userStatus { get; set; }
         public string userDevice { get; set; }
-        public string userGroup { get; set; }
+        public string groupName { get; set; }
         public string userTitle { get; set; }
         public string userCodeGroup { get; set; }
         public string userFullName => string.Format("{0} {1}", userName,userLastName);

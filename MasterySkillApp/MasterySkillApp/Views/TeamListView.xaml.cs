@@ -66,7 +66,7 @@ namespace MasterySkillApp.Views
             // Devuelvo la lista de nombres filtrada
             List<UserModel> sortListModel = MasterySingleton.Instance._listUserModel;
 
-            ListUserTeam.ItemsSource = sortListModel.Where(c => c.userName.ToUpper().Contains(e.NewTextValue.ToUpper()));
+            ListUserTeam.ItemsSource = sortListModel.Where(c => c.userFullName.ToUpper().Contains(e.NewTextValue.ToUpper()));
         }
     }
 }

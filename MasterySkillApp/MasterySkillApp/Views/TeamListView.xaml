@@ -5,7 +5,12 @@
     <ContentPage.Content>
 
         <StackLayout>
-            <SearchBar Placeholder="Buscar por nombre..." TextChanged="SearchBar_TextChanged" HeightRequest="48"/>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End" Padding="10,0,0,0">
+                <Button Image="IconFilterBlack.png" HeightRequest="48" WidthRequest="40" BackgroundColor="Transparent"/>
+                <SearchBar Placeholder="Buscar por nombre..." TextChanged="SearchBar_TextChanged" HeightRequest="48"/>
+                
+            </StackLayout>
             
             <ListView x:Name="ListUserTeam" ItemSelected="ListUsersBadges_ItemSelected">
                 <ListView.ItemTemplate>
