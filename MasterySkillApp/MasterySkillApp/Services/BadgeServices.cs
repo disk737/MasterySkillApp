@@ -3,6 +3,7 @@ using Microsoft.AppCenter.Crashes;
 using Newtonsoft.Json;
 using System;
 using System.Diagnostics;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -135,11 +136,9 @@ namespace MasterySkillApp.Services
         }
 
         // POST: Metodo para enviar un punto a un usuario
-        public async Task<string> SendAttrPoint(UserModel argUser, BasicAttrModel argBasicAttr, string argMessage)
+        public async Task<HttpResponseMessage> SendAttrPoint(UserModel argUser, BasicAttrModel argBasicAttr, string argMessage)
         {
-            // Debo agregar un Handler cuando las respuesas del servidor son fallidas
-            // Solucion temporal 
-            string resFail = "";
+            HttpResponseMessage response = new HttpResponseMessage();
 
             // Construyo la URI a consultar
             var uri = GetUserToken(Constans.SendAttrPoint, ref client);
@@ -156,19 +155,17 @@ namespace MasterySkillApp.Services
             // Hago la llamada al WS
             try
             {
-                var response = await client.PostAsync(uri, BodyRequest);
-
-                // Debo agregar un Handler cuando las respuesas del servidor son fallidas
+                response = await client.PostAsync(uri, BodyRequest);
 
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(@"				ERROR {0}", ex.Message);
                 Crashes.TrackError(ex);
-                resFail = ex.Message;
+                response.StatusCode = HttpStatusCode.InternalServerError;
             }
 
-            return resFail;
+            return response;
         }
 
        

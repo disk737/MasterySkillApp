@@ -5,6 +5,7 @@ using Microsoft.AppCenter.Analytics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -84,19 +85,26 @@ namespace MasterySkillApp.Views
 
             // Despliego el PopUp
             var result = await UserDialogs.Instance.PromptAsync(promptConfig);
+
             if (result.Ok)
             {
                 //var Text = result.Text;
 
                 // Invoco el servicio para el envio de una medalla a un usuario
-                var resFail = await _badgeServices.SendAttrPoint(userModel,attrSelected, result.Text);
+                var response = await _badgeServices.SendAttrPoint(userModel,attrSelected, result.Text);
 
                 Analytics.TrackEvent("BadgeSended");
 
                 // Reviso si hubo algun fallo
-                if (resFail != "")
-                    await DisplayAlert("Oooooppsss, fallo en el envio",resFail, "OK");
-
+                if (response.IsSuccessStatusCode)
+                {
+                    UserDialogs.Instance.Toast("Medalla enviada!", TimeSpan.FromMilliseconds(2500));
+                }
+                else
+                {
+                    await DisplayAlert("Oooooppsss, fallo en el envio", string.Format("Hemos tenido un pequeño fallo, ¿intentas mas tarde?. {0}",response.StatusCode), "OK");
+                }
+                    
             }
 
         }
