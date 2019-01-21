@@ -6,10 +6,21 @@
 
         <StackLayout>
 
-            <AbsoluteLayout>
-                <SearchBar Placeholder="Buscar por nombre..." TextChanged="SearchBar_TextChanged" HeightRequest="48"/>
-                <Button Image="IconFilterBlack.png" HeightRequest="48" WidthRequest="40" BackgroundColor="Transparent"/>
-            </AbsoluteLayout>
+            <Grid HorizontalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <SearchBar Grid.Row="0" Grid.Column="0" 
+                           x:Name="SearchBar" 
+                           Placeholder="Buscar por nombre..." 
+                           TextChanged="SearchBar_TextChanged" 
+                           BackgroundColor="Aquamarine"/>
+                <Button Grid.Row="0" Grid.Column="1" 
+                        Image="IconFilterBlack.png" 
+                        BackgroundColor="Yellow"/>
+            </Grid>
             
             <ListView x:Name="ListUserTeam" ItemSelected="ListUsersBadges_ItemSelected">
                 <ListView.ItemTemplate>

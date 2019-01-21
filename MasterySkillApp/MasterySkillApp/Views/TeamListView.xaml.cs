@@ -59,6 +59,8 @@ namespace MasterySkillApp.Views
 
             ListUserTeam.SelectedItem = null;
 
+            SearchBar.Text = null;
+
         }
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
