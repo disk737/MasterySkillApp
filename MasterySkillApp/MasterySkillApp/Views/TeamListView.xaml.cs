@@ -38,6 +38,7 @@ namespace MasterySkillApp.Views
 
                 // Hago la llamada al Web Service para traer la lista de usuario
                 MasterySingleton.Instance._listUserModel = (await _userServices.GetUserModels()).UserModels;
+
             }
 
             // Vinculo el Source con la lista
@@ -59,7 +60,7 @@ namespace MasterySkillApp.Views
 
             ListUserTeam.SelectedItem = null;
 
-            SearchBar.Text = null;
+            SearchBar.Text = string.Empty;
 
         }
 
