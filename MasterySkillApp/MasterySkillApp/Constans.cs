@@ -15,6 +15,7 @@ namespace MasterySkillApp
         public static string UserSignUp = "/mastery/user/signUp";
         public static string UserSignIn = "/mastery/user/signIn";
         public static string GetBasicAttr = "/mastery/user/getBasicAttr";
+        public static string GetGroups = "/mastery/user/getGroups";
         public static string GetAllUsers = "/mastery/user/getAllUsers";
         public static string GetAttrPoints = "/mastery/user/getAttrPoints";
         public static string SendAttrPoint = "/mastery/user/sendAttrPoint";
