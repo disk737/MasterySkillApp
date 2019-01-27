@@ -5,8 +5,22 @@
     <ContentPage.Content>
 
         <StackLayout>
-            <SearchBar Placeholder="Buscar por nombre..." TextChanged="SearchBar_TextChanged" HeightRequest="48"/>
+
+            <StackLayout Orientation="Horizontal" Padding="5,0,5,0" HorizontalOptions="FillAndExpand">
+
+                <Label Text="Equipo " VerticalOptions="Center" FontSize="Medium" TextColor="{StaticResource DarkGrayColor}"/>
+                <Picker x:Name="GroupPicker" SelectedIndexChanged="GroupPicker_SelectedIndexChanged" HorizontalOptions="FillAndExpand"/>    
+                
+            </StackLayout>
+
             
+            <SearchBar x:Name="SearchBar" 
+                       Placeholder="Buscar por nombre..." 
+                       TextChanged="SearchBar_TextChanged" 
+                       HeightRequest="48"
+                       />
+                
+
             <ListView x:Name="ListUserTeam" ItemSelected="ListUsersBadges_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>

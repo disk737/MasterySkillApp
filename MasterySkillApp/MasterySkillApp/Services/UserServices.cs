@@ -287,5 +287,43 @@ namespace MasterySkillApp.Services
             return responseServer;
         }
 
+        // GET: Obtengo la lista de los Grupos creados
+        public async Task<ListGroupsModel> GetGroups()
+        {
+            // Lista para guarda la respuesta del servicio
+            ListGroupsModel DataResponse = new ListGroupsModel();
+
+            // Construyo la URI a consultar
+            var uri = GetUserToken(Constans.GetGroups, ref client);
+
+            // Indico que se realiza una peticion
+            Debug.WriteLine("Peticion GetGroups");
+
+            try
+            {
+                var response = await client.GetAsync(uri);
+                // Guardo la respuesta del servidor
+                DataResponse.StatusCode = response.StatusCode;
+
+                // Espero una respuesta positiva del servidor (200)
+                if (!response.IsSuccessStatusCode)
+                    return DataResponse;
+
+
+                var content = await response.Content.ReadAsStringAsync();
+
+                // Deserializo la respuesta del servidor en un Json
+                DataResponse.GroupModel = (JsonConvert.DeserializeObject<ListGroupsModel>(content)).GroupModel;
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"				ERROR {0}", ex.Message);
+                Crashes.TrackError(ex);
+            }
+
+            return DataResponse;
+        }
+
     }
 }

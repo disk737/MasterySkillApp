@@ -50,11 +50,11 @@
                             Clicked="EditStatus_Clicked"/>
                 </StackLayout>
 
-                <Label Text="{Binding userGroup}" 
+                <Label Text="{Binding groupName}" 
                        FontSize="Small" 
                        HorizontalTextAlignment="Center"
                        TextColor="White"
-                       IsVisible="{Binding userGroup, Converter={StaticResource StringNullOrEmptyBoolConverter}}"/>
+                       IsVisible="{Binding groupName, Converter={StaticResource StringNullOrEmptyBoolConverter}}"/>
 
                 <BoxView HeightRequest="1" Color="{StaticResource BlueGreen}"/>
 
@@ -62,7 +62,7 @@
                         Style="{StaticResource BlackButton}"
                         Clicked="ChangePassword_Clicked"/>
 
-                <Label Text="V1.10" VerticalOptions="End" HorizontalOptions="End" TextColor="White"/>
+                <Label Text="V1.11" VerticalOptions="End" HorizontalOptions="End" TextColor="White"/>
 
             </StackLayout>
         </ContentPage>
