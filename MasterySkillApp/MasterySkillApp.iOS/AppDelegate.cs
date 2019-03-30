@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using Com.UXCam;
 using Foundation;
 using UIKit;
 
@@ -22,6 +22,8 @@ namespace MasterySkillApp.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            UXCam.StartWithKey("o2myn3tuy6bn2vu");
+
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
