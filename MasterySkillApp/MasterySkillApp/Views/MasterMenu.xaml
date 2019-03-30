@@ -62,7 +62,7 @@
                         Style="{StaticResource BlackButton}"
                         Clicked="ChangePassword_Clicked"/>
 
-                <Label Text="V1.11" VerticalOptions="End" HorizontalOptions="End" TextColor="White"/>
+                <Label Text="V1.12" VerticalOptions="End" HorizontalOptions="End" TextColor="White"/>
 
             </StackLayout>
         </ContentPage>
