@@ -84,6 +84,13 @@ namespace MasterySkillApp.Views
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
+
+            // Debo revisar si la lista esta poblada
+            if (true)
+            {
+
+            }
+
             // Devuelvo la lista de nombres filtrada
             List<UserModel> sortListModel = MasterySingleton.Instance._listUserModel;
 
